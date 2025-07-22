@@ -1,4 +1,5 @@
-// Extracted and revised welcome.js logic
+let trackedMouseX = 0;
+
 let labelsTop = [
   { name: "                G", col: 3, align: "left", yOffset: -10 },
   { name: "HANNAH", col: 3, align: "right", yOffset: -10 },
@@ -66,7 +67,7 @@ function draw() {
 
   stroke(255, 0, 0);
   line(0, animatedLineY, width, animatedLineY);
-  line(mouseX, 0, mouseX, height);
+  line(trackedMouseX, 0, trackedMouseX, height);
 
   fill(0);
   noStroke();
@@ -125,4 +126,13 @@ document.querySelectorAll('.thumb-wrapper').forEach(wrapper => {
   wrapper.addEventListener('mouseleave', () => {
     img.src = `assets/${baseName}.png`;
   });
+});
+
+window.addEventListener('mousemove', (e) => {
+  trackedMouseX = e.clientX;
+});
+window.addEventListener('touchmove', (e) => {
+  if (e.touches.length > 0) {
+    trackedMouseX = e.touches[0].clientX;
+  }
 });
