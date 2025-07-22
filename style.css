@@ -1,0 +1,173 @@
+/* Reset and font */
+
+@font-face {
+  font-family: 'Commercial';
+  src: url('fonts/commercial.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Commercial';
+  box-sizing: border-box;
+}
+html, body {
+  height: 100%;
+  margin: 0;
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  scroll-padding-top: 10vh; /* This helps only when snapping to inner containers */
+
+    scrollbar-width: none;       /* Firefox */
+  -ms-overflow-style: none;
+}
+body::-webkit-scrollbar {
+  display: none;               /* Chrome, Safari, Opera */
+}
+body {
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32'><text x='8' y='21' font-size='30' fill='rgb(255,0,0)'>+</text></svg>") 16 16, auto;
+}
+
+
+main {
+  margin-top: 45vh;
+  position: relative;
+  z-index: 0;
+}
+
+/* Optional: grid overlay (if you use it) */
+.grid-columns {
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding-left: 0.6vw;
+  padding-right: 0.6vw;
+  z-index: 1000; /* higher than welcome/home content */
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 0.6vw;
+  pointer-events: none;
+}
+
+.grid-columns div {
+  border-left: 0.5px solid rgba(255, 0, 0, 0.3);
+  border-right: 0.5px solid rgba(255, 0, 0, 0.3);
+}
+
+.nav-label {
+  cursor: pointer;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100px;
+  left: 0;
+  width: 100%;
+  padding: 0.6vw;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 0.6vw;
+}
+
+.dropdown-content img {
+  width: 100%;
+  height: auto;
+  grid-column: span 8;
+}
+
+#indexLabel:hover + #dropdown {
+  display: grid;
+}
+
+.grid-columns div {
+  border-left: 0.5px solid rgba(255, 0, 0, 0.3);
+  border-right: 0.5px solid rgba(255, 0, 0, 0.3);
+}
+.grid-header {
+        display: grid;
+        padding-left: 0.6vw;
+        padding-right: 0.6vw;
+        grid-template-columns: repeat(8, 1fr);
+        gap: 0.6vw;
+        /* padding: 0.6vw; */
+        position: relative;
+        z-index: 2;
+        /* background: white; */
+      }
+
+      .nav-item {
+        grid-column: span 1;
+        position: relative;
+        cursor: pointer;
+        font-family: inherit;
+        font-size: 14px;
+      }
+
+      .dropdown {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        /* background: white; */
+        padding-top: 0.6vw;
+        width: calc(100vw - 2 * 0.6vw);
+        grid-column: 1 / span 8;
+        z-index: 10;
+      }
+
+      .dropdown img {
+        display: block;
+        width: 100%;
+        margin-bottom: 0.6vw;
+        object-fit: cover;
+      }
+
+      #indexNav:hover .dropdown {
+        display: block;
+      }
+      .index-img {
+        width: calc((100vw - (0.6vw * 9)) / 8); /* total width minus 7 gaps divided by 8 columns */
+        height: auto; /* maintain aspect ratio */
+        display: block;
+}
+header#mainHeader {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  /* background: white; */
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 0.6vw;
+  padding: 0.6vw;
+}
+
+.nav-item {
+  position: absolute;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: normal;
+   -webkit-text-stroke: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: black;
+  transform: translate(-50%, -50%);
+}
+
+
+
+
+#mouseLine {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: red;
+  pointer-events: none;
+  z-index: 500;
+  display: none; /* Hide initially */
+}
