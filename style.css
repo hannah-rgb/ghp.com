@@ -157,17 +157,3 @@ header#mainHeader {
   color: black;
   transform: translate(-50%, -50%);
 }
-
-
-
-
-#mouseLine {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  width: 1px;
-  background: red;
-  pointer-events: none;
-  z-index: 500;
-  display: none; /* Hide initially */
-}
