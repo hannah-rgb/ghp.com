@@ -50,6 +50,7 @@ function setup() {
 }
 
 function draw() {
+  console.log("trackedMouseX:", trackedMouseX);
   clear();
   centerX = width / 2;
   centerY = height / 2;
