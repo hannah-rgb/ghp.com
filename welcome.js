@@ -67,7 +67,7 @@ function draw() {
 
   stroke(255, 0, 0);
   line(0, animatedLineY, width, animatedLineY);
-  line(trackedMouseX, 0, trackedMouseX, height);
+  line(trackedMouseX, 0, trackedMouseX, 10000);
 
   fill(0);
   noStroke();
