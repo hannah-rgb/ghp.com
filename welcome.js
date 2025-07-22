@@ -47,6 +47,9 @@ function setup() {
     label.x = centerX;
     label.y = centerY;
   }
+  cnv.elt.setAttribute('tabindex', '0');
+  cnv.elt.focus(); // ensures canvas gets focus once
+
 }
 
 function draw() {
