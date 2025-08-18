@@ -429,3 +429,41 @@ img {
   -webkit-user-drag: none;
   -webkit-touch-callout: none; /* iOS: hide “Save Image” callout */
 }
+
+/* --- Mobile gate --- */
+#mobileGate{
+  position: fixed;
+  inset: 0;
+  display: none;
+  z-index: 2000;
+  background: #fff;
+  padding: 6vh 6vw;
+  text-align: center;
+  line-height: 1.2;
+  color: black;
+  display: none;
+}
+#mobileGate img{
+  max-width: 86vw;
+  max-height: 60vh;
+  width: auto;
+  height: auto;
+  display: block;
+  margin: 0 auto 2rem;
+  object-fit: contain;
+  border: 1px solid red;
+}
+#mobileGate p{
+  font-size: 14px;
+}
+
+/* On small screens: show gate, hide the site */
+@media (max-width: 820px){
+  #mobileGate{ display: block; }
+  #welcomeSection,
+  #homeContent,
+  header#mainHeader,
+  .grid-columns,
+  main,
+  #mouseLine{ display: none !important; }
+}
