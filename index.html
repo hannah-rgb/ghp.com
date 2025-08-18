@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>⊹ G. Hannah Park Portfolio ⊹</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Grid overlay for p5.js alignment -->
+    <div class="grid-columns">
+      <div></div><div></div><div></div><div></div>
+      <div></div><div></div><div></div><div></div>
+    </div>
+
+    <!-- p5.js Canvas container -->
+    <div id="welcomeSection"></div>
+
+    <!-- Revealed after animation -->
+    <div id="homeContent">
+      <div class="red-line"></div>
+<header id="mainHeader">
+  <div class="nav-item" id="nav-g">G</div>
+  <div class="nav-item" id="nav-index" >
+    INDEX
+    <div class="dropdown">
+      <!-- <span id="Museumsnacht Basel 2025">Museumsnacht Basel 2025</span> -->
+      <span id="OpenSense">0PEN:SENSE</span>
+      <a href="onechfGrafik.html" id="onechfGrafik">1.-CHF Grafik</a>
+      <a href="waves.html" id="waves">100 Waves</a>
+      <a href="Regionale25.html" id="Regionale25">2025 Regionale</a>
+      <span id="DGP">들꽃풀</span>
+      <span id="MANDU">만두</span>
+      <a href="AP.html" id="AP">About Publishing</a>
+      <span id="Afterlike">Afterlike</span>
+      <span id="A">Finnish Spring Water, Ä</span>
+      <spanid="BaZ">Basler Zeitung</span>
+      <span id="Bluemarble">Bluemarble</span>
+      <a href="photobooth.html" id="photobooth">Brutalist Photobooth</a>
+      <a href="Carnault.html" id="Carnault">Carnault</a>
+      <a href="CMDS.html" id="CMDS">CMD.S</a>
+      <a href="Fondue.html" id="Fondue">Fondue Lovers' T</a>
+      <a href="Frankenstein.html" id="Frankenstein">Frankenstein</a>
+      <a href="Humanitico.html" id="Humanitico">Humanitico</a>
+      <span id="MachSchwarz">Mach Schwarz</a>
+      <span id="MM">Model Minority</span>
+      <a href="MN_thumb.html" id="Museumsnacht">Museumsnacht Basel 2025</a>
+      <a href="neueden.html" id="neueden">NeuEden</a>
+      <a href="NNBS.html" id="NNBS">New New Basel Style</a>
+      <a href="onoffgrid.html" id="onoffgrid">on/off Grid</a>
+      <a href="Post-poster.html" id="Post-poster">Post-poster</a>
+      <a href="pristin.html" id="pristin">pristin</a>
+      <a href="rheinshine.html" id="rheinshine">RHEIN*SHINE</a>
+      <span id="select">Select x Borderline</span>
+      <span id="SS">SHAKE SHACK</span>
+      <a href="space3.html" id="space3">Space 3</a>
+      <a href="speeddate.html" id="speeddate">Speed Date CIVIC</a>
+      <span id="ARC">Tracing the arc</span>
+      <span id="sarang">The sarang church</span>
+      <span id="Thorn">Thorn.otf</span>
+      <a href="clock.html" id="clock">Time is Silver</a>
+      <span id="Tmax">Tmax Launch Teaser</span>
+      <a href="TBD.html" id="TBD">Expectation Dart</a>
+    </div>
+  </div>
+  <div class="nav-item" id="nav-hannah">HANNAH</div>      
+  <div class="nav-item" id="nav-park">PARK</div>
+      <div class="AboutH">
+      <span id="About-unfold">Grace Hannah Park navigates the spaces between<br>type, motion, print, and code to question how medium shapes message. <br>Her work often begins with noticing how a moving image can <br>breathe new life into a static poster, or how certain ideas only make sense <br>once printed, folded, or bound. Lately, she’s been drawn to the tactile intelligence of street posters—their materiality, their presence—<br>and how these qualities might be translated into digital formats. With <br>a practice grounded in both formal design and experimental tools, she treats graphic design as a responsive system rather than a fixed outcome.</span>
+    </div>
+  <div class="nav-item" id="nav-about">CONTACT</div>
+        <div class="contact">
+      <span id="contact-unfold">@www_park_works <br>hannahpark.work@gmail.com</span>
+    </div>
+  <div class="nav-item" id="nav-2025">2025</div>
+</header>
+
+      <main>
+<section class="thumbnail-row">
+          <div class="thumb-wrapper" data-id="MN_thumb" data-title="Museumsnacht Basel" data-category="Festival Identity & Poster" data-year="2024"> <img src="thumbs/MN_thumb.png" class="thumb-img" /></div>
+            <div class="thumb-wrapper" data-id="Carnault" data-title="Carnault" data-category="Brand Identity" data-year="2025"><img src="thumbs/carnault.png" class="thumb-img"/></div>
+            <div class="thumb-wrapper" data-id="AP" data-title="About Publishing" data-category="Editorial Design" data-year="2024"><img src="thumbs/ap.png" class="thumb-img" /></div>
+            <div class="thumb-wrapper" data-id="Humanitico" data-title="Humanitico (WIP)" data-category="Type Design" data-year="2025"><img src="thumbs/humanitico.png" class="thumb-img" /></div>
+            <div class="thumb-wrapper" data-id="snake" data-title="2025, SNAKE's YR" data-category="3D Motion contents design" data-year="2025"><img src="thumbs/snake.png" class="thumb-img" /></div>
+            <div class="thumb-wrapper" data-id="OpenSense" data-title="0PEN:SENSE" data-category="Creative coding, Physical computing" data-year="2025, Thesis project </br> CASE STUDY COMING SOON"><img src="thumbs/OpenSense.png" class="thumb-img" /></div>
+            <div class="thumb-wrapper" data-id="MM" data-title="Model Minority" data-category="Design Research(RTD)" data-year="2025, Thesis project </br> CASE STUDY COMING SOON"><img src="thumbs/MM.png" class="thumb-img" /></div>
+            <div class="thumb-wrapper" data-id="Fondue" data-title="Fondue Lovers' T" data-category="Shop" data-year="2025"><img src="thumbs/fondue.png" class="thumb-img" /></div>
+</section>
+
+ <section class="thumbnail-row">
+            <div class="thumb-wrapper" data-id="Regionale25" data-title="Regionale 25" data-category="Exhibition Identity & Poster" data-year="2025"><img src="thumbs/Regionale25.png" class="thumb-img" /></div>            
+            <div class="thumb-wrapper" data-id="MachSchwarz" data-title="Mach Schwarz" data-category="Brand Identity & Package Design" data-year="COMING SOON"><img src="thumbs/MachSchwarz.png" class="thumb-img" /></div>            
+            <div class="thumb-wrapper" data-id="CMDS" data-title="command.S" data-category="Magazine Publishing & Editorial Design" data-year="2024"><img src="thumbs/cmds.png" class="thumb-img" /></div>            
+            <div class="thumb-wrapper" data-id="rheinshine" data-title="RHEIN☆SHINE" data-category="Lettering Design" data-year="2024"><img src="thumbs/rheinshine.png" class="thumb-img" /></div>   
+            <div class="thumb-wrapper" data-id="TBD" data-title="Expectation Dart" data-category="Interactive poster design" data-year="2024"><img src="thumbs/TBD.png" class="thumb-img" /></div>
+            <div class="thumb-wrapper" data-id="photobooth" data-title="Brutalist Photobooth" data-category="Creative Coding" data-year="2024"><img src="thumbs/photobooth.png" class="thumb-img" /></div>        
+            <div class="thumb-wrapper" data-id="onechfGrafik" data-title="1.- CHF Grafik" data-category="Graphic Design Activism Experiment" data-year="2024"><img src="thumbs/onechfGrafik.png" class="thumb-img" /></div>        
+            <div class="thumb-wrapper" data-id="clock" data-title="Time is SILVER" data-category="Kinetic Clock Poster" data-year="2024"><img src="thumbs/clock.png" class="thumb-img" /></div>        
+            <!-- repeat 8 times total -->
+</section>
+
+<section class="thumbnail-row">
+            <div class="thumb-wrapper" data-id="NNBS" data-title="New New Basel Style" data-category="Collaborative Poster Design" data-year="2023"><img src="thumbs/NNBS.png" class="thumb-img" /></div>
+            <div class="thumb-wrapper" data-id="neueden" data-title="NeuEden" data-category="Brand Experience Design" data-year="2021"><img src="thumbs/neueden.png" class="thumb-img" /></div>
+            <div class="thumb-wrapper" data-id="arc" data-title="Tracing The ARC" data-category="Design Research & Editorial Design" data-year="2024"><img src="thumbs/arc.png" class="thumb-img" /></div>
+            <div class="thumb-wrapper" data-id="onoffgrid" data-title="on/off GRID" data-category="Variable Font" data-year="2025"><img src="thumbs/onoffgrid.png" class="thumb-img" /></div>
+            <div class="thumb-wrapper" data-id="speeddate" data-title="Freilager Speed Date" data-category="Poster & Motion" data-year="2024"><img src="thumbs/speeddate.png" class="thumb-img" /></div>        
+            <div class="thumb-wrapper" data-id="weingart" data-title="Interactive Poster Series</br>Wolfgang Weingart" data-category="Creative Coding" data-year="2025"><img src="thumbs/weingart.png" class="thumb-img" /></div>   
+            <div class="thumb-wrapper" data-id="space3" data-title="Space.3" data-category="NFT Platform UX/UI Design" data-year="2021"><img src="thumbs/space3.png" class="thumb-img" /></div>   
+            <div class="thumb-wrapper" data-id="space3T" data-title="Space.3 NFT T-shirt" data-category="Merchandise Design" data-year="2021"><img src="thumbs/space3T.png" class="thumb-img" /></div>   
+</section>
+
+<section class="thumbnail-row">
+            <div class="thumb-wrapper" data-id="homecoming" data-title="Home Coming IDCE Party" data-category="Poster Design for Student Event" data-year="2024"><img src="thumbs/homecoming.png" class="thumb-img" /></div>
+<div class="thumb-wrapper thumb-empty" aria-hidden="true"></div>
+            <div class="thumb-wrapper" data-id="waves" data-title="100 WAVES" data-category="Editorial Design & Website Design" data-year="2021"><img src="thumbs/waves.png" class="thumb-img" /></div>   
+            <div class="thumb-wrapper" data-id="shakeshack" data-title="SHAKE SHACK kr" data-category="Type Design" data-year="2021"><img src="thumbs/shakeshack.png" class="thumb-img" /></div>   
+<div class="thumb-wrapper thumb-empty" aria-hidden="true"></div>
+            <div class="thumb-wrapper" data-id="Tmax" data-title="Carnault No.1 TMAX Launch" data-category="3D Motion contents design" data-year="2025"><img src="thumbs/tmax.png" class="thumb-img" /></div>
+            <div class="thumb-wrapper" data-id="armin" data-title="Interactive Poster Series</br>Armin Hofmann" data-category="Creative Coding" data-year="2024"><img src="thumbs/armin.png" class="thumb-img" /></div>   
+<div class="thumb-wrapper thumb-empty" aria-hidden="true"></div>
+<div class="thumb-wrapper thumb-empty" aria-hidden="true"></div>
+<div class="thumb-wrapper thumb-empty" aria-hidden="true"></div>
+<div class="thumb-wrapper thumb-empty" aria-hidden="true"></div>
+<div class="thumb-wrapper thumb-empty" aria-hidden="true"></div>
+<div class="thumb-wrapper thumb-empty" aria-hidden="true"></div>
+            <div class="thumb-wrapper" data-id="select" data-title="SELECT(Techno Label in Basel)" data-category="3D Motion Graphic" data-year="2025"><img src="thumbs/select.png" class="thumb-img" /></div>  
+<div class="site-update" id="siteUpdate" role="status" aria-live="polite"> 
+   Portfolio currently updating — more projects + detailed case studies coming in September.
+</div>
+
+</section>
+
+
+<section class="thumbnail-row"></section>
+
+<div class="thumb-wrapper thumb-empty" aria-hidden="true"></div>     
+</section>
+
+
+
+    <script src="welcome.js"></script>
+    <div id="mouseLine"></div>
+    <script>
+(function () {
+  const el = document.getElementById('siteUpdate');
+  if (!el) return;
+
+  const text = 'Portfolio currently updating — more projects + detailed case studies coming in September.';
+  const speedMsPerChar = 26; // adjust typing speed
+
+  function typeIt() {
+    el.classList.add('typing');
+    let i = 0;
+    (function step() {
+      if (i <= text.length) {
+        el.textContent = text.slice(0, i++);
+        setTimeout(step, speedMsPerChar);
+      } else {
+        // keep caret blinking: leave 'typing' class on
+        // to stop the caret after finishing, uncomment next line:
+        // el.classList.remove('typing');
+      }
+    })();
+  }
+
+  // Respect reduced motion
+  const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce) {
+    el.textContent = text;
+    return;
+  }
+
+  // Start when visible
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(entries => {
+      if (entries.some(e => e.isIntersecting)) {
+        typeIt();
+        io.disconnect();
+      }
+    }, { threshold: 0.1 });
+    io.observe(el);
+  } else {
+    // Fallback: start immediately
+    typeIt();
+  }
+})();
+</script>
+<script>
+/* Block right-click + image drag */
+(function () {
+  // 1) Disable the context menu everywhere
+  window.addEventListener('contextmenu', (e) => e.preventDefault(), { capture: true });
+
+  // 2) Prevent right-button actions that some browsers fire even without contextmenu
+  const blockIfRight = (e) => { if (e.button === 2) e.preventDefault(); };
+  window.addEventListener('mousedown', blockIfRight, { capture: true });
+  window.addEventListener('mouseup', blockIfRight,   { capture: true });
+  window.addEventListener('auxclick', blockIfRight,  { capture: true });
+
+  // 3) Stop dragging images to save
+  document.addEventListener('dragstart', (e) => {
+    if (e.target && e.target.tagName === 'IMG') e.preventDefault();
+  }, { capture: true });
+
+  // 4) Mark all images as not draggable
+  document.querySelectorAll('img').forEach(img => img.setAttribute('draggable', 'false'));
+})();
+</script>
+
+  </body>
+</html>

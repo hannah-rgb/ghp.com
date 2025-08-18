@@ -1,0 +1,6 @@
+.DS_Store
+*.mov
+*.mp4
+*.zip
+thumbs/*.gif
+photobooth/presentation/assets/

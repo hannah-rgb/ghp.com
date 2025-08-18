@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Expectation Dart</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Commercial', sans-serif;
+      font-size: 13px;
+    }
+
+    .grid-columns {
+      position: fixed;
+      top: 0;
+      left: 0;
+      padding-left: 0.6vw;
+      padding-right: 0.6vw;
+      z-index: 0;
+      width: 100vw;
+      height: 100vh;
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      gap: 0.6vw;
+      pointer-events: none;
+    }
+
+    .grid-columns div {
+      border-left: 0.5px solid rgba(255, 0, 0, 0.3);
+      border-right: 0.5px solid rgba(255, 0, 0, 0.3);
+    }
+
+    header#mainHeader {
+      position: sticky;
+      top: 0;
+      height: 0vh;
+      z-index: 10;
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      gap: 0.6vw;
+      padding: 0vw;
+    }
+
+    .nav-item {
+      position: absolute;
+      font-family: inherit;
+      font-size: 16px;
+      font-weight: normal;
+      -webkit-text-stroke: 0;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      color: black;
+      /* transform: translate(-50%, -50%); */
+    }
+    
+
+    #nav-g       { left: 0.95vw;  top: 2.2vh; }
+    #nav-index    { left: 18.95vw;   top: 3.95vh; width: calc((101vw - (9 * 0.6vw)) / 8); }
+    #nav-hannah  { left: 27.25vw; top: 2.2vh; }
+    #nav-park    { left: 51.4vw;  top: 2.2vh; }
+    #nav-about   { left: 89.7vw;   top: 3.95vh; }
+    #nav-2025    { left: 50vw;    top: 3.1vh; color: red; }
+
+    main {
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      gap: 0.6vw;
+      padding: 5vh 0.6vw;
+      align-items: start;
+      align-self: start;
+      justify-self: start;
+      margin-top: 0.3vh;
+      /* border: 1px solid red; */
+      height: 100vh;
+      overflow: hidden; 
+    }
+
+/* Scrollable container for image */
+.scroll-container {
+  grid-column: 1 / span 4;
+  height: 100vh;
+  overflow-y: scroll;
+  padding-right: 0.3vw;
+  width: 100%; /* make sure it spans the full grid width */
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32'><text x='8' y='21' font-size='30' fill='rgb(255,0,0)'>↓</text></svg>") 16 16, auto;
+  scrollbar-width: 0vh;       /* Firefox */
+  -ms-overflow-style: none;    /* IE 10+ */
+}
+
+.scroll-container::-webkit-scrollbar {
+  width: 0%;
+  display: none; /* Chrome, Safari, Opera */
+}
+
+.scroll-container,
+.img-col {
+  width: 100%;
+  padding: 0;        /* ensure no padding unless needed */
+  margin: 0;         /* reset margin */
+  box-sizing: border-box;
+}
+
+.img-col img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.img-col video { width: 100%; height: auto; display: block; }
+/* or, if you prefer by class */
+.full-img { width: 100%; height: auto; display: block; }
+
+/* Right-side columns grouped */
+.text-col {
+  grid-column: 5 / span 4;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.6vw;
+}
+
+/* Text blocks stick to top of screen */
+.sticky-text {
+  position: sticky;
+  align-self: start;
+}
+
+/* Positioning within text grid */
+.category-col {
+  grid-column: 1;
+  font-weight: bold;
+}
+.desc-col {
+  grid-column: 2 / span 2;
+}
+.info-col {
+  grid-column: 4;
+  font-size: 12px;
+  color: gray;
+}
+
+    .red-line-horizontal {
+  position: fixed;
+  top: 3.1vh; /* match the 2025 label */
+  left: 0;
+  width: 100vw;
+  height: 1px;
+  background: red;
+  z-index: 999;
+  pointer-events: none;
+}
+
+.red-line-vertical {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: red;
+  z-index: 999;
+  pointer-events: none;
+  display: block;
+}
+
+.AboutH {
+  display:none;
+  grid-column: 3 / span 2;
+  /* text-align: justify; */
+  /* background: white; */
+  padding-left: 8px;
+  padding-top: 5.1vh;
+  font-size: 13px;
+  line-height: 1.16;
+  color: grey;
+}
+
+  </style>
+</head>
+<body>
+  <!-- Background column grid -->
+  <div class="grid-columns">
+    <div></div><div></div><div></div><div></div>
+    <div></div><div></div><div></div><div></div>
+  </div>
+
+  <!-- Fixed Header -->
+<header id="mainHeader">
+  <div class="nav-item" id="nav-g">G</div>
+  <div class="nav-item" id="nav-index">
+    INDEX
+    <div class="dropdown">
+      <!-- <span id="Museumsnacht Basel 2025">Museumsnacht Basel 2025</span> -->
+      <a href="OpenSense.html" id="OpenSense">0PEN:SENSE</a>
+      <a href="1chfGrafik.html" id="onechfGrafik">1.-CHF Grafik</a>
+      <a href="100Waves.html" id="100Waves">100 Waves</a>
+      <a href="Regionale25.html" id="Regionale25">2025 Regionale</a>
+      <a href="DGP.html" id="DGP">들꽃풀</a>
+      <a href="MANDU.html" id="MANDU">만두</a>
+      <a href="AP.html" id="AP">About Publishing</a>
+      <span id="Afterlike">Afterlike</span>
+      <a href="A.html" id="A">Finnish Spring Water, Ä</a>
+      <a href="BaZ.html" id="BaZ">Basler Zeitung</a>
+      <a href="Bluemarble.html" id="Bluemarble">Bluemarble</a>
+      <a href="photobooth.html" id="photobooth">Brutalist Photobooth</a>
+      <a href="Carnault.html" id="Carnault">Carnault</a>
+      <a href="CMDS.html" id="CMDS">CMD.S</a>
+      <a href="Fondue.html" id="Fondue">Fondue Lovers' T</a>
+      <a href="Frankenstein.html" id="Frankenstein">Frankenstein</a>
+      <a href="Humanitico.html" id="Humanitico">Humanitico</a>
+      <a href="MachSchwarz.html" id="MachSchwarz">Mach Schwarz</a>
+      <a href="MM.html" id="MM">Model Minority</a>
+      <a href="MN_thumb.html" id="Museumsnacht">Museumsnacht Basel 2025</a>
+      <a href="NeuEden.html" id="NeuEden">NeuEden</a>
+      <a href="NNBS.html" id="NNBS">New New Basel Style</a>
+      <a href="onoffgrid.html" id="onoffgrid">on/off Grid</a>
+      <a href="Post-poster.html" id="Post-poster">Post-poster</a>
+      <a href="pristin.html" id="pristin">pristin</a>
+      <a href="rheinshine.html" id="rheinshine">RHEIN*SHINE</a>
+      <a href="select.html" id="select">Select x Borderline</a>
+      <a href="SS.html" id="SS">shake shack</a>
+      <a href="S3.html" id="S3">Space 3</a>
+      <a href="ARC.html" id="ARC">Tracing the arc</a>
+      <a href="sarang.html" id="sarang">The sarang church</a>
+      <a href="Thorn.html" id="Thorn">Thorn.otf</a>
+      <a href="clock.html" id="clock">Time is Silver</a>
+      <a href="Tmax.html" id="Tmax">Tmax Launch Teaser</a>
+      <a href="TBD.html" id="TBD">Expectation Dart</a>
+    </div>
+  </div>
+  <div class="nav-item" id="nav-hannah">HANNAH</div>      
+  <div class="nav-item" id="nav-park">PARK</div>
+      <div class="AboutH">
+      <span id="About-unfold">Grace Hannah Park navigates the spaces between<br>type, motion, print, and code to question how medium shapes<br> message. Her work often begins with noticing how<br> a moving image can breathe new life into a static poster, <br>or how certain ideas only make sense once printed, <br>folded, or bound. Lately, she’s been drawn to the tactile intelligence of street posters—their materiality, their presence—and how these qualities might be translated into digital formats. With a practice grounded in both formal design and experimental tools, she treats graphic design as a <br>responsive system rather than a fixed outcome.</span>
+    </div>
+  <div class="nav-item" id="nav-about">CONTACT</div>
+        <div class="contact">
+      <span id="contact-unfold">@www_park_works <br>hannahpark.work@gmail.com</span>
+    </div>
+  <div class="nav-item" id="nav-2025">2025</div>
+</header>
+
+  <!-- Main Content Layout -->
+  <main>
+  <div class="scroll-container">
+    <div class="img-col">
+    <video class="full-img" autoplay muted loop playsinline preload="metadata" poster="TBD/video-poster.webp">
+      <source src="TBD/clip1.mp4" type="video/mp4" />
+      <!-- <source src="MN/clip1.webm" type="video/webm" /> -->
+      Sorry, your browser doesn’t support embedded videos.
+    </video>
+      <img src="TBD/img1.webp" alt="img1" class="full-img" />
+      <img src="TBD/img2.webp" alt="img2" class="full-img" />
+      <img src="TBD/img3.webp" alt="img3" class="full-img" />
+      <!-- <img src="TBD/img5.webp" alt="img3" class="full-img" /> -->
+     <video class="full-img" autoplay muted loop playsinline preload="metadata" poster="TBD/video-poster2.webp">
+      <source src="TBD/clip2.MOV" type="video/MOV" />
+      <!-- <source src="MN/clip1.webm" type="video/webm" /> -->
+      Sorry, your browser doesn’t support embedded videos.
+    </video>
+      <img src="TBD/img6.webp" alt="img6" class="full-img" />
+      <img src="TBD/img7.webp" alt="img7" class="full-img" />
+      <img src="TBD/img4.webp" alt="img4" class="full-img" />
+<br/><br/><br/><br/>
+      <!-- Add more images if needed for scrolling -->
+    </div>
+  </div>
+
+  <div class="text-col">
+    <div class="category-col sticky-text">
+      Expectation Dart <br/> Expectation Chair<br/>Expectation Book
+    </div>
+    <div class="desc-col sticky-text">
+Broken Expectation Seriese is an interactive poster series that I designed during Design Authorship class with Jiri Oplatek. I decided to introduce myself by
+"BREAKING" down myself because I've been only building up my entire life. So I created 150 pages of graphic materials first and then with the ingredients I created two Dart posters and one chair poster so that people can actually interact with the posters to throw darts, break it and sit on it.
+    </div>
+
+    <div class="info-col sticky-text">
+      2024<br/>
+      Interactive / Participatory Poster 
+    </div>
+  </div>
+</main>
+  <div class="red-line-horizontal"></div>
+  <div class="red-line-vertical" id="mouseLine"></div>
+  <script>
+
+  const indexElement = document.getElementById('nav-index');
+  const navHannah = document.getElementById('nav-hannah');
+  const navPark = document.getElementById('nav-park');
+  const navAbout = document.getElementById('nav-about');
+  // const contact = document.querySelector('.contact');
+  const aboutH = document.querySelector('.AboutH');
+
+  // INDEX dropdown toggle
+  indexElement?.addEventListener('click', (event) => {
+    event.stopPropagation();
+    indexElement.classList.toggle('clicked');
+  });
+
+  // HANNAH click interaction
+  navHannah?.addEventListener('click', (event) => {
+    event.stopPropagation();
+    navHannah.classList.toggle('clicked');
+    navPark.classList.remove('clicked');
+    navAbout.classList.remove('clicked');
+    indexElement.classList.remove('clicked');
+
+    aboutH.style.display = navHannah.classList.contains('clicked') ? 'block' : 'none';
+    contact.style.display = 'none';
+  });
+
+  // PARK click interaction
+  navPark?.addEventListener('click', (event) => {
+    event.stopPropagation();
+    navPark.classList.toggle('clicked');
+    navHannah.classList.remove('clicked');
+    navAbout.classList.remove('clicked');
+    indexElement.classList.remove('clicked');
+
+    aboutH.style.display = navPark.classList.contains('clicked') ? 'block' : 'none';
+    contact.style.display = 'none';
+  });
+
+  // ABOUT click interaction
+  navAbout?.addEventListener('click', (event) => {
+    event.stopPropagation();
+    navAbout.classList.toggle('clicked');
+    navHannah.classList.remove('clicked');
+    navPark.classList.remove('clicked');
+    indexElement.classList.remove('clicked');
+
+    contact.style.display = navAbout.classList.contains('clicked') ? 'block' : 'none';
+    aboutH.style.display = 'none';
+  });
+
+
+  // Click outside to close
+  document.addEventListener('click', function (event) {
+    if (!navIndex.contains(event.target)) navIndex.classList.remove('clicked');
+    if (!navHannah.contains(event.target)) navHannah.classList.remove('clicked');
+    if (!navPark.contains(event.target)) navPark.classList.remove('clicked');
+    if (!navAbout.contains(event.target)) navAbout.classList.remove('clicked');
+  });
+
+  // Optional: Add mouse line tracker
+  const mouseLine = document.getElementById('mouseLine');
+  document.addEventListener('mousemove', function (event) {
+    if (mouseLine) {
+      mouseLine.style.left = event.clientX + 'px';
+    }
+  });
+
+document.getElementById('nav-g').addEventListener('click', function () {
+  window.location.href = 'index.html?skipWelcome=true';
+
+});
+
+
+  document.getElementById('nav-about').addEventListener('click', function () {
+  window.location.href = 'about.html';
+  });
+
+</script>
+<script>
+/* Block right-click + image drag */
+(function () {
+  // 1) Disable the context menu everywhere
+  window.addEventListener('contextmenu', (e) => e.preventDefault(), { capture: true });
+
+  // 2) Prevent right-button actions that some browsers fire even without contextmenu
+  const blockIfRight = (e) => { if (e.button === 2) e.preventDefault(); };
+  window.addEventListener('mousedown', blockIfRight, { capture: true });
+  window.addEventListener('mouseup', blockIfRight,   { capture: true });
+  window.addEventListener('auxclick', blockIfRight,  { capture: true });
+
+  // 3) Stop dragging images to save
+  document.addEventListener('dragstart', (e) => {
+    if (e.target && e.target.tagName === 'IMG') e.preventDefault();
+  }, { capture: true });
+
+  // 4) Mark all images as not draggable
+  document.querySelectorAll('img').forEach(img => img.setAttribute('draggable', 'false'));
+})();
+</script>
+</body>
+</html>
