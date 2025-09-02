@@ -1,0 +1,1301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>POST-POSTER</title>
+  <link rel="icon" href="/assets/pp_favicon.svg" type="image/x-icon" />
+
+  <!-- Link to your stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+  <!-- ml5 for PoseNet -->
+
+</head>
+<body>
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.4/p5.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.4/addons/p5.sound.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/ml5@0.12.2/dist/ml5.min.js"></script>
+  <!-- Column guides (optional) -->
+  <div class="grid-columns">
+    <div></div><div></div><div></div><div></div>
+    <div></div><div></div><div></div><div></div>
+  </div>
+
+  <!-- Fixed Header -->
+  <header class="fixed-header">
+    <div class="header-grid">
+    <div data-label="intro">INTRODUCTION</div>
+    <div data-label="ref">RESEARCH</div>
+    <div data-label="sensor">EXPERIMENTS</div>
+    <div data-label="poster">APPLICATION</div>
+    <div data-label="final">CONCLUSION</div>
+    </div>
+  </header>
+
+  <!-- Fixed Footer (already 8-col per your vars) -->
+  <footer class="fixed-footer">
+    <div class="footer-grid ">
+      <div>POST-POSTER</div>
+      <div class="center-slide-number"><span id="slide-number">1</span> / 37</div>
+      <div>MDES</div>
+      <div>UIC / FHNW</div>
+      <div>©<span class="half-space" aria-hidden="true"></span>GRACE HANNAH PARK</div>
+    </div>
+  </footer>
+
+  <!-- Scroll Snap Container -->
+  <div class="scroll-container">
+
+    <!-- SLIDE 1 (Title slide) — grid only, no .vertical-section -->
+ <section class="snap-section">
+  <div class="grid-section hero" style="align-self:start; padding-top:30vh; padding-bottom:40vh;">
+    <figure class="title-by start-4 col-span-1" style="grid-row:1; align-self:start;">
+            BY<br>
+            AS<br>
+            @<br>
+            TUTORS<br><br><br><br></figure>
+    <figure class="title-info start-5 col-span-1" style="grid-row:1; align-self:start;">
+            GRACE HANNAH PARK<br>
+            2025 MDES THESIS<br>
+            IDCE HGK FHNW BASEL<br>
+            JIRI OPLATEK<br>
+            TED DAVIS<br>
+            BÉRÉNICE SERRA<br>
+            INVAR TORRE HOLLAUS</figure>
+
+    <div class="start-3 col-span-4 edge-dashes" style="grid-row: 2; align-self:start;">
+      <h2 class="title " style="margin:0 0 0 0;">POST-POSTER</h2>
+      <p class="subtitle">A GRAPHIC MEDIUM REWIRED BY INTERACTION</p>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 2 — INDEX -->
+<section class="snap-section" id="index">
+  <div class="grid-section index">
+    <!-- Col 1: Introduction -->
+    <nav class="index-col start-1 col-span-1 edge-dashes" style="grid-row:1; align-self:start; margin-top: 3.1vh;" >
+      <details>
+        <summary class="ix-summary">INTRODUCTION</summary>
+        <div class="ix-children">
+          <button class="ix-link" data-slide="3">BACKGROUND</button>
+          <button class="ix-link" data-slide="4">MOTIVATION</button>
+          <button class="ix-link" data-slide="5">RESEARCH QUESTION</button>
+          <!-- <button class="ix-link" data-slide="3">METHODOLOGY</button> -->
+        </div>
+      </details>
+    </nav>
+
+    <!-- Col 2: References -->
+    <nav class="index-col start-2 col-span-1 edge-dashes" style="margin-top: 16.1vh;">
+      <details>
+        <summary class="ix-summary">RESEARCH</summary>
+        <div class="ix-children">
+          <button class="ix-link" data-slide="6">Theory</button>
+          <button class="ix-link" data-slide="7">references</button>
+          <!-- <button class="ix-link" data-slide="6">Media art reference</button> -->
+        </div>
+      </details>
+    </nav>
+
+    <!-- Col 3: Process documentations -->
+    <nav class="index-col start-3 col-span-1 edge-dashes" style="margin-top: 26.2vh;">
+      <details>
+        <summary class="ix-summary">PROCESS <br>DOCUMENTATION </summary>
+
+        <details>
+          <summary class="ix-link">Experiments</summary>
+          <div class="ix-grandchildren">
+            <details>
+              <summary class="ix-link">Re-imagining classic posters</summary>
+              <div class="ix-greatgrandchildren">
+                <button class="ix-link" data-slide="9">«Gewerbe museums basel»<br> Armin Hofmann</button>
+                <button class="ix-link" data-slide="9">«Typo-<br>graphie #11»<br>
+Wolfgang Weingart</button>
+                <button class="ix-link" data-slide="10">«Giselle»<br>
+Armin Hofmann</button>
+              </div>
+            </details>
+            <details>
+              <summary class="ix-link">API experiments</summary>
+              <div class="ix-greatgrandchildren">
+                <button class="ix-link" data-slide="11">OPENWEATHER</button>
+                <button class="ix-link" data-slide="11">UNSPLASH</button>
+                <button class="ix-link" data-slide="11">GEMINI</button>
+              </div>
+            </details>
+            <button class="ix-link" data-slide="12">Moby Dick</button>
+          </div>
+        </details>
+
+        <!-- when Experiments unfolds, this naturally gets pushed further down -->
+        <button class="ix-link" data-slide="15">0pen:sense</button>
+      </details>
+    </nav>
+
+    <!-- Col 4: Application -->
+    <nav class="index-col start-4 col-span-1 edge-dashes" style="margin-top: 39.3vh;">
+      <details>
+        <summary class="ix-summary">APPLICATION</summary>
+        <div class="ix-children">
+          <button class="ix-link" data-slide="16"> Model Minority</button>
+          <button class="ix-link" data-slide="17">Idea</button>
+          <button class="ix-link" data-slide="19">Process</button>
+          <button class="ix-link" data-slide="21">Documentation</button>
+          <!-- <button class="ix-link" data-slide="17">Learnings</button> -->
+        </div>
+      </details>
+    </nav>
+
+    <!-- Col 5: Conclusion -->
+    <nav class="index-col start-5 col-span-1 edge-dashes" style="margin-top: 52.4vh;">
+      <details>
+        <summary class="ix-summary">CONCLUSION</summary>
+        <div class="ix-children">
+          <button class="ix-link" data-slide="22">Observations</button>
+          <button class="ix-link" data-slide="22">Learnings</button>
+          <button class="ix-link" data-slide="23">Future steps</button>
+        </div>
+      </details>
+    </nav>
+
+      <!-- Col 6: Terminology and Methodology -->
+    <nav class="index-col start-7 col-span-2 edge-dashes" style="grid-row:1; align-self:start; margin-top:20vh;">
+      <details>
+        <summary class="ix-summary">TERMINOLOGY</summary>
+        <div class="ix-terminology">
+          <p><u>INTERACTION</u> a structure that co-creates aesthetic experience</p>
+          <br>
+          <p><u>CYBERNETICS</u> an interface that senses, interprets, and adapts in real time to its environment and to people nearby</p>
+          <br>
+          <p>STATIC = FLAT = one-directional <br>↔ DYNAMIC = Both-directional</p>
+        </div>
+      </details>
+    </nav>
+        <nav class="index-col start-7 col-span-2 edge-dashes" style="grid-row:1; align-self:start; margin-top:60vh;">
+      <details>
+        <summary class="ix-summary">METHODOLOGY</summary>
+        <div class="ix-terminology">
+          <p>Research-through-Design(RTD)</p>
+          <p>AI Collaboration</p>
+        </div>
+      </details>
+    </nav>
+  </div>
+</section>
+
+<!-- DIVIDER INTRO -->
+ <section class="snap-section">
+  <div class="grid-section">
+    <div class="start-4 col-span-1 edge-dashes" style="grid-row: 1; font-size: 40pt; align-self: start; margin-top:20vh;">
+      <p>1</p></div>
+      <div class="start-5 col-span-2" style="grid-row: 1; font-size: 40pt; align-self: start; margin-top:20vh; background-color: black;">
+      <p>INTRODUCTION</p></div>
+    </div>
+</section>
+
+
+<!-- SLIDE 3 — POSTER PILLAR -->
+<section class="snap-section">
+  <div class="grid-section">
+    <!-- click to toggle -->
+    <figure
+      class="start-5 col-span-4 edge-dashes switcher"
+      style="grid-row:1;"
+      data-src1="assets/slide3.png"
+      data-src2="assets/slide3-2.png"
+      data-cap1="Election posters<br>in Vilnius, 1933<br>© P. Lileikis"
+      data-cap2="Kölner Litfaßsäulen<br>2024<br>© Astrid Piethan"
+      data-caption="#cap-3"
+      role="button" tabindex="0"
+    >
+      <img src="assets/slide3.png" alt="">
+    </figure>
+
+    <!-- this caption will be replaced on toggle -->
+    <p id="cap-3" class="captionR start-4 col-span-1" style="grid-row:1; align-self:end;">
+      Election posters<br>in Vilnius, 1993<br>© P. Lileikis
+    </p>
+
+    <figure class="start-2 col-span-2" style="grid-row:1; align-self:center;">
+      <p class="body edge-dashes">Challenge HOW WE ENGAGE WITH<br>URBAN ENVIRONMENT &<br>communicate in public space</p>
+    </figure>
+  </div>
+</section>
+
+<!-- SLIDE 4 — HEK POSTER -->
+<section class="snap-section">
+      <div class="grid-section">
+        <figure class="start-1 col-span-4 edge-dashes" style="grid-row:1;">
+          <img src="assets/slide2.webp" alt="" style="width:100%; height:auto; object-fit:cover;">
+        </figure>
+         <p class="captionL start-5 col-span-1" style="grid-row:1; align-self:end;">
+          Regionale 25 Poster<br>in Basel, 2025<br>© Grace H. Park
+        </p>
+        <figure class="start-6 col-span-2" style="grid-row:1; align-self:center;">
+          <p class="body edge-dashes">bridgING graphic design<br>with emerging technology<br>to create living, responsive<br>urban artifacts</p>
+        </figure>
+      </div>
+</section>
+
+<!-- DIVIDER RESEARCH -->
+ <section class="snap-section">
+  <div class="grid-section">
+    <div class="start-4 col-span-1 edge-dashes" style="grid-row: 1; font-size: 40pt; align-self: start; margin-top:20vh;">
+      <p>2</p></div>
+      <div class="start-5 col-span-2" style="grid-row: 1; font-size: 40pt; align-self: start; margin-top:20vh; background-color: black;">
+      <p>RESEARCH</p></div>
+    </div>
+</section>
+
+<!-- SLIDE 5 — RESEARCH QUESTION -->    
+  <section class="snap-section">
+  <div class="grid-section" style="align-self:start;">
+    <div class="start-2 col-span-6 edge-dashes" style="grid-row: 1; align-self:center;">
+      <h2 class="researchQ" style="margin:0 0 0 0;">“How can posters evolve from one-directional messages<br>into responsive systems that engage people and environments?”</h2>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 6 — THEORY -->   
+<section class="snap-section">
+  <div class="grid-section hero2">
+
+    <!-- triggers (row 1) -->
+
+    <figure class="trigger-1 start-2 col-span-2" style="grid-row:1; align-self:start; padding-top:10vh;">
+      <p class="quote edge-dashes">posters are part of <br>a messy urban media system, <br>not just isolated artifacts.</p>
+      <p class="h3">Matthew Fuller, <br>Media Ecologies, <br>2005</p>
+    </figure>
+
+
+    <figure class="trigger-2 start-2 col-span-2" style="grid-row:1; align-self:start; padding-top:30vh;">
+      <p class="quote edge-dashes">communication is shaped by feedback <br>and context—designers are no longer <br>sole authors.</p>
+      <p class="h3">Heinz von Foerster, <br>Ethics and Second-Order Cybernetics, <br>2003</p>
+    </figure>
+
+    <figure class="trigger-3 start-2 col-span-2" style="grid-row:1; align-self:start; padding-top:50vh;">
+      <p class="quote edge-dashes">the aesthetic experience emerges from an orchestrated interplay between immersive action and reflective distance.</p>
+      <p class="h3">Katja Kwastek, <br>Aesthetics of Interaction in Digital Art <br>2013</p>
+    </figure>
+
+<figure class="stack-lines start-4 col-span-2" style="grid-row:1; align-self:start; padding-top:170px;">
+  <div class="grid-rule" style="margin-top: 0px;"></div>
+  <div class="grid-rule" style="margin-top: 193px;"></div>
+  <div class="grid-rule" style="margin-top: 193px;"></div>
+</figure>
+
+    <figure class="start-6 col-span-2" style="grid-row:1; align-self:center;">
+      <p class="quote2 edge-dashes" style="text-align:center; height:400px; padding-top:150px;">the<br>poster<br>as a<br>cybernetic<br>surface</p>
+    </figure>
+
+    <!-- targets (row 3: images) -->
+    <img  class="img-1  start-6 col-span-2 edge-dashes" src="assets/slide6-1.png" style="grid-row:1; align-self:center; height: 40vh;">
+    <img  class="img-2  start-6 col-span-2 edge-dashes" src="assets/slide6-2.png" style="grid-row:1; align-self:center; padding-top:40px; width:100%; height:auto;">
+    <img  class="img-3  start-6 col-span-2 edge-dashes" src="assets/slide6-3.png" style="grid-row:1; align-self:center; padding-top:40px; width:100%; height:auto;">
+
+    <!-- targets (row 4: captions) -->
+    <p class="cap-1 captionL start-8 col-span-1" style="grid-row:1; align-self:start;padding-top:56vh;">The ‘Lennon Bridge’<br>in Hong Kong, 2019<br>© Tai Wo Hau</p>
+    <p class="cap-2 captionL start-8 col-span-1" style="grid-row:1; align-self:start;padding-top:56vh;">ACDC Poster with Graffiti<br>in Berlin, 2025<br>© Grace H. Park</p>
+    <p class="cap-3 captionL start-8 col-span-1" style="grid-row:1; align-self:start;padding-top:55vh;">Installation view of teamLab Borderless<br>in Tokyo, 2001<br>© Teamlab</p>
+
+  </div>
+</section>
+
+<!-- SLIDE 7 — GRAPHIC DESIGN REF -->
+<section class="snap-section">
+  <div class="grid-section" style="padding-top:10px";>
+    <div class="start-3 col-span-4 edge-dashes" style="align-self:center; grid-row:1;">
+<iframe
+  src="https://player.vimeo.com/video/206244616?badge=0&autoplay=1&muted=1&player_id=0&app_id=58479"
+  title="oto" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+         <p class="captionL start-5 col-span-1" style="grid-row:1; padding-top:20px;">
+          Oto Nové Swiss<br>Studio Feixen, London, 2017<br>
+        </p>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 8 — GRAPHIC DESIGN REF2 -->
+<section class="snap-section">
+  <div class="grid-section" style="padding-top:10px";>
+  <div class="start-3 col-span-4 edge-dashes" style="align-self:center; grid-row:1;">
+<iframe
+  class="iframe2"
+  src="https://player.vimeo.com/video/1057839805?badge=0&autoplay=1&muted=1&player_id=0&app_id=58479"
+  title="DEMO 2025 — Aftermovie" width="1920" height="1080" frameborder="0"
+  allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+ <p class="captionL start-5 col-span-1" style="grid-row:1; padding-top:20px;">
+          Demo Festival<br>Studio Dumbar, Amsterdam, 2020
+        </p>
+    </div>  
+  </div>
+</section>
+
+<!-- SLIDE 9 — SENSOR USING AD CAMPAIGN REF -->
+<section class="snap-section">
+  <div class="grid-section" style="padding-top:10px";>
+    <div class="start-3 col-span-4 edge-dashes" style="align-self:center; grid-row:1;">
+<iframe width="560" height="315"
+  src="https://www.youtube.com/embed/tdQgsmYKxLM?si=d8JwXH7K5HGq7Vtj&controls=0&autoplay=1&mute=1&playsinline=1"
+  title="Wind" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+         <p class="captionL start-3 col-span-1" style="grid-row:1; padding-top:20px;">
+          Blowing in the wind<br> Ogilvy, Stockholm, 2015<br>
+        </p>
+    </div>
+  </div>
+</section>
+
+<!-- DIVIDER EXPERIMENTS -->
+ <section class="snap-section">
+  <div class="grid-section">
+    <div class="start-4 col-span-1 edge-dashes" style="grid-row: 1; font-size: 40pt; align-self: start; margin-top:20vh;">
+      <p>3</p></div>
+      <div class="start-5 col-span-2" style="grid-row: 1; font-size: 40pt; align-self: start; margin-top:20vh; background-color: black;">
+      <p>EXPERIMENTS</p></div>
+    </div>
+</section>
+
+<!-- SLIDE 10 — EXPERIMENTS Armin Hofmann-->
+ <section class="snap-section">
+  <div class="grid-section">
+    <div class="start-3 col-span-1"style="align-self:start; grid-row:1; padding-top:10vh;">
+      <figure class="edge-dashes" >
+          <img src="assets/slide8-1.png" alt="" style="width:100%; height:auto; object-fit:cover;">
+        </figure>
+         <p class="captionL" style="grid-row:1; align-self:end; padding-top:10px;">
+          «Plakate aus der sammlung <br>des gewerbe museums basel»
+Armin Hofmann, <br>1961
+        </p> </div>
+    <!-- 4-column area for the sketch -->
+    <div class="start-4 col-span-3"style="align-self:start; grid-row:1; padding-top:10vh;">
+  <div id="p5-wrap-1" class="p5-box">
+    <div class="p5-cta" id="cta-mic">
+      <button type="button" id="btn-mic">Enable Microphone</button>
+    </div>
+  </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 11 — EXPERIMENTS 2 wolfgang weingart-->
+<section class="snap-section">
+  <div class="grid-section">
+     <div class="start-3 col-span-1" style="align-self:start; grid-row:1; padding-top:10vh;">
+              <figure class="edge-dashes" >
+          <img src="assets/slide8-2.png" alt="" style="width:100%; height:auto; object-fit:cover;">
+        </figure>
+         <p class="captionL" style="grid-row:1; align-self:end; padding-top:10px;">
+«Typographie kann unter umstÄnden kunst sein»<br>Wolfgang Weingart, <br>1973
+        </p> 
+    </div>
+    <!-- 4-column area for the sketch -->
+    <div class="start-4 col-span-3" style="align-self:start; grid-row:1; padding-top:10vh;">
+  <div id="p5-wrap-2" class="p5-box">
+    <div class="p5-cta" id="cta-cam">
+      <button type="button" id="btn-cam">Enable Camera</button>
+    </div>
+  </div>
+</div>
+  </div>
+</section>
+
+<!-- SLIDE 12 — GISELLE -->
+<section class="snap-section">
+  <div class="grid-section">
+    <div class="start-3 col-span-1" style="align-self:start; grid-row:1; padding-top:10vh;">
+      <figure>
+        <img src="assets/slide9.png" alt="" style="width:100%; height:auto; object-fit:cover;">
+      </figure>
+      <p class="captionL" style="grid-row:1; align-self:end; padding-top:10px;">
+        «Giselle»<br>Armin Hofmann,<br>1959
+      </p>
+    </div>
+
+    <div class="start-4 col-span-3" style="align-self:start; grid-row:1; padding-top:10vh;">
+      <div id="p5-wrap-3" class="p5-box">
+        <div class="p5-cta" id="cta-pose3">
+          <button type="button" id="btn-pose3">Enable Camera</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 13 — GISELLE 2-->
+<section class="snap-section">
+      <div class="grid-section">
+    <div class="start-3 col-span-4" style="grid-row:1; align-self:center; padding-top:3.5vh;">
+      <video class="vid" src="assets/Giselle2.mov"
+             loop autoplay muted playsinline controls></video>
+                      <p class="captionL" style="grid-row:1; align-self:end; padding-top:10px;">
+          Timeloops Mockup over 24 hours
+        </p>
+    </div>
+      </div>
+</section>
+
+ <!-- SLIDE 14: SENSORS -->
+ <section class="snap-section">
+  <div class="grid-section sensors" style="padding:3.5vh 0;">
+
+    <!-- ROW 1 IMAGES -->
+    <figure class="start-2 col-span-1 img-r1">
+      <img src="assets/pir-motion-s.png" alt="">
+    </figure>
+    <figure class="start-3 col-span-1 img-r1">
+      <img src="assets/accelerometor.png" alt="">
+    </figure>
+    <figure class="start-4 col-span-1 img-r1">
+      <img src="assets/sound-s.png" alt="">
+    </figure>
+    <figure class="start-5 col-span-1 img-r1">
+      <img src="assets/clock-s.png" alt="">
+    </figure>
+    <figure class="start-6 col-span-1 img-r1">
+      <img src="assets/temperature-s.png" alt="">
+    </figure>
+    <figure class="start-7 col-span-1 img-r1">
+      <img src="assets/microphone-s.png" alt="">
+    </figure>
+
+    <!-- ROW 1 CAPTIONS (same columns, next row) -->
+    <p class="start-2 col-span-1 cap-r1 body edge-dashes">PIR Motion Sensor</p>
+    <p class="start-3 col-span-1 cap-r1 body edge-dashes">ACCELEROMETER</p>
+    <p class="start-4 col-span-1 cap-r1 body edge-dashes">Sound Sensor</p>
+    <p class="start-5 col-span-1 cap-r1 body edge-dashes">Clock Sensor</p>
+    <p class="start-6 col-span-1 cap-r1 body edge-dashes">Temperature Sensor</p>
+    <p class="start-7 col-span-1 cap-r1 body edge-dashes">Microphone Sensor</p>
+
+    <!-- ROW 2 IMAGES -->
+    <figure class="start-2 col-span-1 img-r2">
+      <img src="assets/tof-distance-s.png" alt="">
+    </figure>
+    <figure class="start-3 col-span-1 img-r2">
+      <img src="assets/distance-s2.png" alt="">
+    </figure>
+    <figure class="start-4 col-span-1 img-r2">
+      <img src="assets/co2-s.png" alt="">
+    </figure>
+    <figure class="start-5 col-span-1 img-r2">
+      <img src="assets/humidity-s.png" alt="">
+    </figure>
+    <figure class="start-6 col-span-1 img-r2">
+      <img src="assets/light-s.png" alt="">
+    </figure>
+    <figure class="start-7 col-span-1 img-r2">
+      <img src="assets/airquality-s.png" alt="">
+    </figure>
+
+    <!-- ROW 2 CAPTIONS -->
+    <p class="start-2 col-span-1 cap-r2 body edge-dashes">TOF Distance Sensor</p>
+    <p class="start-3 col-span-1 cap-r2 body edge-dashes">Distance Sensor 2</p>
+    <p class="start-4 col-span-1 cap-r2 body edge-dashes">CO₂ Sensor</p>
+    <p class="start-5 col-span-1 cap-r2 body edge-dashes">Humidity Sensor</p>
+    <p class="start-6 col-span-1 cap-r2 body edge-dashes">Light Sensor</p>
+    <p class="start-7 col-span-1 cap-r2 body edge-dashes">Air Quality Sensor</p>
+
+    <!-- ROW 3 IMAGES -->
+    <figure class="start-2 col-span-1 img-r3">
+      <img src="assets/distance-s.png" alt="">
+    </figure>
+    <figure class="start-3 col-span-1 img-r3">
+      <img src="assets/ultra-sonic-s.png" alt="">
+    </figure>
+    <figure class="start-4 col-span-1 img-r3">
+      <img src="assets/rgb-light-s.png" alt="">
+    </figure>
+    <figure class="start-5 col-span-1 img-r3">
+      <img src="assets/rgb-proximity-s.png" alt="">
+    </figure>
+    <figure class="start-6 col-span-1 img-r3">
+      <img src="assets/photo-resistor.png" alt="">
+    </figure>
+
+    <!-- ROW 3 CAPTIONS -->
+    <p class="start-2 col-span-1 cap-r3 body edge-dashes">Distance Sensor</p>
+    <p class="start-3 col-span-1 cap-r3 body edge-dashes">Ultrasonic Sensor</p>
+    <p class="start-4 col-span-1 cap-r3 body edge-dashes">RGB Light Sensor</p>
+    <p class="start-5 col-span-1 cap-r3 body edge-dashes">RGB Proximity Sensor</p>
+    <p class="start-6 col-span-1 cap-r3 body edge-dashes">Photoresistor Module</p>
+
+  </div>
+</section>
+
+<!-- SLIDE 15: 0PEN:SENSE -->
+    <section class="snap-section">
+      <iframe id="open_sense" src="http://0pen-sense.xyz/" class="embedded-site"
+        loading="lazy"></iframe>
+    </section>
+
+<!-- SLIDE 16 — API -->
+<section class="snap-section">
+  <div class="grid-section">
+    <div class="start-1 col-span-3" style="align-self:start; padding-top:10vh;">
+      <video class="vid" style="grid-row:1; align-self:start;"
+      src="assets/slide10-1.mov"loop autoplay muted playsinline controls></video>
+      <video class="vid" style="grid-row:2; align-self:start;"
+      src="assets/slide10-2.mov"loop autoplay muted playsinline controls></video>
+    </div>
+    <div class="start-5 col-span-3" style="align-self:start; padding-top:10vh;">
+      <img src="assets/slide11.png" alt="" style="width:100%; height:auto; object-fit:cover;">
+    </div>
+
+     <div class="start-4 col-span-1"style="align-self:start; grid-row:1; padding-top:10vh;">
+         <p class="captionL" style="grid-row:1;">
+          Typographic experiments using Live wind data of location from OPENWeatherAPI
+        </p>
+ </div>     <div class="start-8 col-span-1"style="align-self:start; grid-row:1; padding-top:10vh;">
+         <p class="captionL" style="grid-row:1;">
+          Image and typography layer experiments using Poem and Photography based on location from GEMINI API and USPLASH API
+        </p> </div>
+  </div>
+</section>
+
+<!-- DIVIDER APPLICATION -->
+ <section class="snap-section">
+  <div class="grid-section">
+    <div class="start-4 col-span-1 edge-dashes" style="grid-row: 1; font-size: 40pt; align-self: start; margin-top:20vh;">
+      <p>4</p></div>
+      <div class="start-5 col-span-2" style="grid-row: 1; font-size: 40pt; align-self: start; margin-top:20vh; background-color: black;">
+      <p>APPLICATION</p></div>
+    </div>
+</section>
+
+<!-- SLIDE 16 — MOBY DICK 01-->
+<section class="snap-section">
+  <div class="grid-section" style="padding-top:10px";>
+  <div class="start-3 col-span-4 edge-dashes" style="align-self:center; grid-row:1;">
+<iframe
+  class="iframe2"
+  src="https://www.youtube.com/embed/kP8L79pSpvE?si=fkuhCqSElrXwl9OK&controls=0&start=37&enablejsapi=1&mute=1&playsinline=1"
+  title="DEMO 2025 — Aftermovie" width="1920" height="1080" frameborder="0"
+  allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+ <p class="captionL start-5 col-span-1" style="grid-row:1; padding-top:20px;">
+          Moby Dick – das Solo <br>Herman Melville, Theater Basel, Annual play
+        </p>
+    </div>  
+  </div>
+</section>
+
+<!-- SLIDE 15 — MOBY DICK -->
+<section class="snap-section">
+      <div class="grid-section">
+    <div class="start-1 col-span-8">
+      <video class="vid" src="assets/mobydick_m.mp4"
+             loop autoplay muted playsinline controls></video>
+    </div>
+      </div>
+    </section>
+
+<!-- SLIDE 12 — MOBY DICK STILLS-->
+<section class="snap-section">
+      <div class="grid-section">
+      <div class="start-2 col-span-2" >
+      <img src="assets/slide12-1.png" alt="" style="width:100%; height:auto; object-fit:cover;">
+        <figure class="start-3 col-span-1" style="grid-row:1; align-self:center;">
+          <p class="body edge-dashes">Arrangement of information structure <Br>& detail design (micro typography)</p>
+        </figure>    
+        </div> 
+      <div class="start-4 col-span-2" >
+      <img src="assets/slide12-2.png" alt="" style="width:100%; height:auto; object-fit:cover;">
+        <figure class="start-3 col-span-1" style="grid-row:1; align-self:center;">
+          <p class="body edge-dashes">Call for action → direct instruction <Br>how to activate the interaction</p>
+        </figure>    
+        </div> 
+      <div class="start-6 col-span-2" >
+      <img src="assets/slide12-3.png" alt="" style="width:100%; height:auto; object-fit:cover;">
+        <figure class="start-3 col-span-1" style="grid-row:1; align-self:center;">
+          <p class="body edge-dashes">Inbetween frames control <br> or Intuitive ideas? </p>
+        </figure>    
+        </div> 
+     </div>
+</section>
+
+<!-- SLIDE 12 — FLOSS-->
+<section class="snap-section">
+  <div class="grid-section">
+      <div class="start-3 col-span-4" style="align-self:center;" >
+      <img src="assets/floss.png" alt="" style="width:100%; height:auto; object-fit:cover;">
+      <p class="captionL" style="grid-row:1; align-self:end; padding-top:10px;">
+          Floss Festival 2024 <br>© floss.ch
+        </p> 
+        </div> </div> 
+  </section>
+
+
+<!-- SLIDE 14: MM-about -->
+ <section class="snap-section">
+  <div class="grid-section">
+<figure class="start-5 col-span-4 edge-dashes" style="grid-row:1; align-self: center;">
+  <div id="mm-slider"
+       class="mm-slider"
+       data-images='[
+         "assets/mm_about_1.webp",
+         "assets/mm_about_2.webp",
+         "assets/mm_about_3.webp",
+         "assets/mm_about_4.webp"
+       ]' style="max-height:60vh;">
+    <img alt="Model Minority still" />
+    <div class="mm-hotzone left" aria-hidden="true"></div>
+    <div class="mm-hotzone right" aria-hidden="true"></div>
+  </div>
+</figure>
+<p class="captionR start-4 col-span-1" style="grid-row:1; align-self:end; padding-bottom:10vh;"> MODEL MINORITY<br>Benjamin Truong, 2025<br>© Shahin Hefter </p>
+<figure class="start-2 col-span-2 edge-dashes" style="grid-row:1; align-self:center; background-color: #111;"> <p class="mm-title">MODEL<br>MINORITY<br></p> <p class="subitle" style="text-align:center; padding-bottom:2vh; text-transform:uppercase;" >Treibstofftage Basel 2025 <br> @ ROXY Theater <br> Directed by Benjamin Truong</p> </figure>
+</div>
+</section>
+
+<!-- SLIDE 15: MM-ideas -->
+<section class="snap-section">
+  <div class="grid-section hero2">
+
+    <figure class="start-6 col-span-2" style="grid-row:1; align-self:start; padding-top:10vh;">
+      <p class="quote edge-dashes"style="text-align: center; padding:10;">Provoking Poster :<br>Giving back the gaze</p>
+    </figure>
+
+      <p class="start-5 col-span-1" style="grid-row:1; align-self:start; padding-top:10vh; font-size:40px;text-align: center;">①</p>
+
+    <figure class="start-6 col-span-2" style="grid-row:1; align-self:start; padding-top:30vh;">
+      <p class="quote edge-dashes"style="text-align: center; padding:10;">Prejudice from Distance</p>
+    </figure>
+      <p class=" start-5 col-span-1" style="grid-row:1; align-self:start; padding-top:30vh;font-size:40px;text-align: center;">②</p>
+
+    <figure class="start-6 col-span-2" style="grid-row:1; align-self:start; padding-top:50vh;">
+      <p class="quote edge-dashes" style="text-align: center; padding:10;">Standing out from the background<Br>—Being part of the environments or not</p>
+    </figure>
+
+    
+      <p class=" start-5 col-span-1" style="grid-row:1; align-self:start; padding-top:50vh;font-size:40px; text-align: center;">③</p>
+
+    <figure class="start-2 col-span-2" style="grid-row:1; align-self:center;">
+    <img  class="edge-dashes" src="assets/eye.png" style="grid-row:1; align-self:center; padding-top:40px; width:100%; height:auto;">
+    </figure>
+  </div>
+</section>
+
+        <!-- SLIDE 17 — MM-layers -->
+    <section class="snap-section">
+      <div class="grid-section">
+    <div class="start-1 col-span-8">
+      <video class="vid" src="assets/layer.mp4"
+             loop autoplay muted playsinline controls></video>
+    </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 17 — MM-layers -->
+    <section class="snap-section">
+      <div class="grid-section">
+    <div class="start-2 col-span-2" style="align-self:center;">
+      <video class="vid" src="assets/layer-eye-move2.mp4"
+             loop autoplay muted playsinline controls></video>
+             <p class="body edge-dashes">Horizontal Location</p>
+    </div>
+        <div class="start-4 col-span-2" style="align-self:center;">
+      <video class="vid" src="assets/layer-closer2.mp4"
+             loop autoplay muted playsinline controls></video>
+             <p class="body edge-dashes">distance</p>
+    </div>
+            <div class="start-6 col-span-2" style="align-self:center;">
+      <video class="vid" src="assets/layer-bg.mp4"
+             loop autoplay muted playsinline controls></video>
+             <p class="body edge-dashes">Time & Location</p>
+    </div>
+      </div>
+    </section>
+
+<!--silver layer-->
+    <section class="snap-section">
+    <div class="grid-section">
+    <div class="start-3 col-span-2" style="align-self:start; padding-top:10vh;">
+      <video class="vid" style="grid-row:1; align-self:start;"
+      src="assets/layer-s-1.mp4"loop autoplay muted playsinline controls></video>
+      <video class="vid" style="grid-row:2; align-self:start;"
+      src="assets/layer-silver-2.mp4"loop autoplay muted playsinline controls></video>
+      <p class="captionL" style="padding-bottom:10vh;"> <br>Silver print <br>reproduced in digital </p>
+
+    </div>
+        <div class="start-5 col-span-2" style="align-self:start; padding-top:10vh;">
+      <video class="vid" style="grid-row:1; align-self:start;"
+      src="assets/layer-silver.mp4"loop autoplay muted playsinline controls></video>
+    </div>
+    </div>
+</section>
+
+    <!-- SLIDE 17 — CIVIC -->
+    <section class="snap-section">
+      <div class="grid-section">
+    <div class="start-1 col-span-8">
+      <video class="vid" src="assets/civic-timelapse.mp4"
+             loop autoplay muted playsinline controls></video>
+    </div>
+      </div>
+    </section>
+
+       <section class="snap-section">
+      <div class="grid-section">
+    <div class="start-2 col-span-3">
+    <img src="assets/roxy1.jpg" alt="" style="width:100%; height:auto; object-fit:cover;"></img>
+
+    </div>   <div class="start-5 col-span-3">
+    <img src="assets/roxy2.jpg" alt="" style="width:100%; height:auto; object-fit:cover;"></img>
+
+    </div>
+      </div>
+    </section>
+    
+
+        <!-- SLIDE 17 — ROXY -->
+    <section class="snap-section">
+      <div class="grid-section">
+    <div class="start-1 col-span-8">
+      <video class="vid" src="assets/roxy.mp4"
+             loop autoplay muted playsinline controls></video>
+    </div>
+      </div>
+    </section>
+
+            <!-- SLIDE 16: MM-mockup -->
+<section class="snap-section">
+      <div class="start-1 col-span-8" >
+      <img src="assets/mm-mockup.png" alt="" style="width:100%; height:auto; object-fit:cover;"> 
+        </div> 
+  </section>
+
+
+    <!-- DIVIDER INTRO -->
+ <section class="snap-section">
+  <div class="grid-section">
+    <div class="start-4 col-span-1 edge-dashes" style="grid-row: 1; font-size: 40pt; align-self: start; margin-top:20vh;">
+      <p>5</p></div>
+      <div class="start-5 col-span-2" style="grid-row: 1; font-size: 40pt; align-self: start; margin-top:20vh; background-color: black;">
+      <p>CONCLUSION</p></div>
+    </div>
+</section>
+
+    <!-- SLIDE LAST — RESEARCH QUESTION -->    
+  <section class="snap-section">
+  <div class="grid-section" style="align-self:start;">
+    <div class="start-2 col-span-6 edge-dashes" style="grid-row: 1; align-self:center;">
+      <h2 class="researchQ" style="margin:0 0 0 0;">“How can posters evolve from one-directional messages<br>into responsive systems that engage people and environments?”</h2>
+    </div>
+  </div>
+</section>
+  <section class="snap-section">
+  <div class="grid-section" style="align-self:start;">
+    <div class="start-2 col-span-6 edge-dashes" style="grid-row: 1; align-self:center;">
+      <h2 class="researchQ" style="margin:0 0 0 0;">Interaction in poster design becomes a responsive system <br> when there are meaningful participations.</h2>
+    </div>
+  </div>
+</section>
+  <section class="snap-section">
+  <div class="grid-section" style="align-self:start;">
+    <div class="start-2 col-span-6 edge-dashes" style="grid-row: 1; align-self:center;">
+      <h2 class="researchQ" style="margin:0 0 0 0;">authority <br> agency <br> temporality</h2>
+    </div>
+  </div>
+</section>
+
+  <section class="snap-section">
+  <div class="grid-section" style="align-self:start;">
+    <div class="start-4 col-span-2 edge-dashes" style="grid-row: 1; align-self:center;">
+      <h2 class="researchQ" style="margin:0 0 0 0;">THANK YOU</h2>
+    </div>
+  </div>
+</section>
+
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/addons/p5.sound.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/p5.serialserver@0.0.28/lib/p5.serialport.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@makinteract/p5.serialport@0.0.4/lib/p5.serialport.min.js"></script> -->
+ <script>
+/* =======================
+   Sketch 1 — MIC + SHAPES
+   ======================= */
+let p5Audio; // hold instance so we can call methods
+
+const sketchAudio = (p) => {
+  let img, amp, mic, micOn = false, wrap;
+
+  const shapeGroups = [
+    [{ x: 344, y: 0 }, { x: 384, y: 0 }],
+    [{ x: 570, y: 85 }, { x: 570, y: 120 }],
+    [
+      { x: 0, y: 0 }, { x: 0, y: 473.3892 }, { x: 0, y: 404.2 }, { x: 0, y: 529.1999 },
+      { x: 0, y: 535.4682 }, { x: 103.5441, y: 517.4129 }, { x: 0, y: 575.2174 },
+      { x: 0, y: 710.3024 }, { x: 99.7058, y: 747.0241 }, { x: 107.3628, y: 747.48 },
+      { x: 175.2183, y: 644.6673 }, { x: 108.3212, y: 800 }, { x: 132.575, y: 800 },
+      { x: 218.7695, y: 719.0904 }, { x: 210, y: 800 }, { x: 570, y: 800 },
+      { x: 570, y: 230.1957 }, { x: 480.3029, y: 342.5333 }, { x: 450.3419, y: 342.5333 },
+      { x: 462.5773, y: 306.0442 }, { x: 427.6552, y: 328.9485 }, { x: 171.728, y: 0 }
+    ],
+    [{ x: 81.3924, y: 561.4776 }, { x: 100, y: 600 }, { x: 118, y: 540 }, { x: 81, y: 561.4776 }],
+    [{ x: 112.13, y: 619.5426 }, { x: 165, y: 540 }, { x: 112.13, y: 619.5426 }],
+    [
+      { x: 163.1168, y: 568.4204 }, { x: 158.5, y: 616.5 }, { x: 144.4217, y: 675.9901 },
+      { x: 213, y: 555 }, { x: 289, y: 475 }
+    ],
+  ];
+
+  p.preload = () => { img = p.loadImage('armin/bird1.png', ()=>{}, ()=>{}); };
+
+  p.setup = () => {
+    wrap = document.getElementById('p5-wrap-1');
+    p.createCanvas(wrap.clientWidth, wrap.clientHeight).parent(wrap);
+    p.pixelDensity(window.devicePixelRatio || 1);
+    p.imageMode(p.CENTER);
+    p.noLoop(); // save CPU until visible
+  };
+
+  p.windowResized = () => {
+    wrap = document.getElementById('p5-wrap-1');
+    p.resizeCanvas(wrap.clientWidth, wrap.clientHeight);
+  };
+
+  p.draw = () => {
+    const sx = p.width / 570;
+    const sy = p.height / 800;
+
+    p.background(240, 234, 223);
+
+    const level = (micOn && amp) ? amp.getLevel() : 0;
+    const offsetX = p.map(level, 0, 0.05, -150, 150);
+    const offsetY = p.map(level, 0, 0.05, -150, 150);
+    const randMag = 10;
+
+    p.push(); p.scale(sx, sy);
+    for (let i = 0; i < shapeGroups.length; i++) {
+      const group = shapeGroups[i];
+      if (group.length < 2) continue;
+      p.fill(i <= 2 ? p.color(239, 68, 35) : p.color(240, 234, 223));
+      p.noStroke();
+      p.beginShape();
+      p.vertex(group[0].x, group[0].y);
+      for (let j = 0; j < group.length - 1; j++) {
+        const a = group[j], b = group[j+1];
+        const cp1x = p.lerp(a.x, b.x, 0.3) + offsetX + p.random(-randMag, randMag);
+        const cp1y = p.lerp(a.y, b.y, 0.3) - offsetY + p.random(-randMag, randMag);
+        const cp2x = p.lerp(a.x, b.x, 0.7) - offsetX + p.random(-randMag, randMag);
+        const cp2y = p.lerp(a.y, b.y, 0.7) + offsetY + p.random(-randMag, randMag);
+        p.bezierVertex(cp1x, cp1y, cp2x, cp2y, b.x, b.y);
+      }
+      p.endShape(p.CLOSE);
+    }
+    p.pop();
+
+    if (img) p.image(img, p.width / 2, p.height / 2, p.width, p.height);
+  };
+
+  // called by button
+  p.startMic = () => {
+    if (micOn) return;
+    mic = new p5.AudioIn();
+    mic.start(() => {
+      amp = new p5.Amplitude(); amp.setInput(mic);
+      micOn = true;
+      document.getElementById('cta-mic')?.remove();
+    }, () => alert('Microphone permission denied.'));
+  };
+};
+
+/* =========================
+   Sketch 2 — CAMERA + DOTS
+   ========================= */
+let p5Cam;
+
+const sketchCam = (p) => {
+  let img, cam, camOn = false, wrap, spots = [];
+
+  p.preload = () => { img = p.loadImage('weingart/typo.png'); };
+
+  p.setup = () => {
+    wrap = document.getElementById('p5-wrap-2');
+    p.createCanvas(wrap.clientWidth, wrap.clientHeight).parent(wrap);
+    p.pixelDensity(window.devicePixelRatio || 1);
+    p.imageMode(p.CENTER);
+
+    // seed ovals
+    for (let i = 0; i < 4000; i++) {
+      const w = p.random(5, 15);
+      spots.push({ x:p.random(p.width), y:p.random(p.height),
+                   w, h:w*p.random(0.5,1.5), angle:p.random(p.TWO_PI) });
+    }
+    p.noLoop(); // save CPU until visible
+  };
+
+  p.windowResized = () => {
+    wrap = document.getElementById('p5-wrap-2');
+    p.resizeCanvas(wrap.clientWidth, wrap.clientHeight);
+  };
+
+  p.draw = () => {
+    p.background(159,165,171);
+
+    if (img){
+      const s = p.height / img.height;
+      p.image(img, p.width/2, p.height/2, img.width * s, p.height);
+    }
+
+    if (camOn && cam && cam.elt && cam.elt.readyState >= 2) cam.loadPixels();
+
+    p.noStroke();
+    for (const spt of spots){
+      let bright = 127;
+      if (camOn && cam && cam.pixels && cam.pixels.length){
+        const vx = Math.floor(p.map(spt.x, 0, p.width,  0, cam.width));
+        const vy = Math.floor(p.map(spt.y, 0, p.height, 0, cam.height));
+        const idx = (vy * cam.width + vx) * 4;
+        const r = cam.pixels[idx], g = cam.pixels[idx+1], b = cam.pixels[idx+2];
+        bright = (r+g+b)/3;
+      }
+      const factor = p.map(bright, 0, 255, 0.5, 1.5);
+      const speed  = p.map(bright, 0, 255, 0, 2.5);
+
+      spt.x = (spt.x + Math.cos(spt.angle)*speed + p.width)  % p.width;
+      spt.y = (spt.y + Math.sin(spt.angle)*speed + p.height) % p.height;
+
+      p.fill(159,165,171, 245);
+      p.ellipse(spt.x, spt.y, spt.w*factor, spt.h*factor);
+    }
+  };
+
+  // called by button
+p.startCam = () => {
+  if (camOn) return;
+  try {
+    cam = p.createCapture({ video:true, audio:false }, () => {
+      camOn = true;
+      document.getElementById('cta-cam')?.remove();
+      p.loop();                 // <- start drawing now
+    });
+    cam.size(320, 240);
+    cam.hide();
+  } catch(e) {
+    alert('Camera requires https or localhost.');
+  }
+};
+};
+
+/* ================
+   Boot + observers
+   ================ */
+document.addEventListener('DOMContentLoaded', () => {
+  // start instances
+  p5Audio = new p5(sketchAudio);
+  p5Cam   = new p5(sketchCam);
+
+  // wire buttons
+  document.getElementById('btn-mic')?.addEventListener('click', () => p5Audio.startMic());
+  document.getElementById('btn-cam')?.addEventListener('click', () => p5Cam.startCam());
+
+  // Pause canvases when their parent slide isn’t visible
+  const scroller = document.querySelector('.scroll-container') || null;
+  const opts = { root: scroller || null, threshold: 0.35 };
+
+  const watch = (wrapId, instance) => {
+    const wrap = document.getElementById(wrapId);
+    if (!wrap) return;
+    const io = new IntersectionObserver((entries)=>{
+      for (const e of entries){
+        if (e.isIntersecting) instance.loop();
+        else instance.noLoop();
+      }
+    }, opts);
+    io.observe(wrap);
+  };
+
+  watch('p5-wrap-1', p5Audio);
+  watch('p5-wrap-2', p5Cam);
+});
+
+/* =========================
+   Sketch 3 — GISELLE
+   ========================= */
+(() => {
+  const MODEL_PATH = 'Giselle/';
+  const IMG_PATH   = 'Giselle/Gbx.png';
+
+  const sketchPose = (p) => {
+    let wrap, cnv, cam, camOn = false, poseNet, poses = [];
+    let lastNoseX = null, direction = null, lastDirChange = 0;
+    let spinCount = 0, spinInProgress = false, spinStartTime = 0;
+    const spinDelayPerModel = 100;
+    let img;
+
+    const scales = [1, 1.1, 0.75, 0.75, 0.9, 0.9, 0.75];
+    const verticalOffsets   = [45, 152, 235, 370, 460, 498, 585];
+    const horizontalOffsets = [-210, -195, -240, -240, -220, -220, -240];
+
+    let models = [];
+    let angles = Array(7).fill(0);
+    let targets = Array(7).fill(0);
+
+    p.preload = () => {
+      for (let i = 1; i <= 7; i++) {
+        models.push(p.loadModel(`${MODEL_PATH}giselle${i}.obj`, true));
+      }
+      img = p.loadImage(IMG_PATH, ()=>{}, ()=>{});
+    };
+
+    p.setup = () => {
+      wrap = document.getElementById('p5-wrap-3');
+      cnv = p.createCanvas(wrap.clientWidth, wrap.clientHeight, p.WEBGL);
+      cnv.parent(wrap);
+      p.pixelDensity(window.devicePixelRatio || 1);
+      p.imageMode(p.CENTER);
+      p.noLoop();
+
+      const scroller = document.querySelector('.scroll-container') || null;
+      const io = new IntersectionObserver((entries) => {
+        const e = entries[0];
+        if (!e) return;
+        if (e.isIntersecting && camOn) p.loop(); else p.noLoop();
+      }, { root: scroller, threshold: 0.2 });
+      io.observe(wrap);
+    };
+
+    p.windowResized = () => {
+      if (!wrap) wrap = document.getElementById('p5-wrap-3');
+      p.resizeCanvas(wrap.clientWidth, wrap.clientHeight);
+    };
+
+    p.startPoseCam = () => {
+      if (camOn) return;
+      if (!window.ml5) { alert('ml5 (PoseNet) not loaded.'); return; }
+      try {
+        cam = p.createCapture({ video:true, audio:false }, () => {
+          poseNet = ml5.poseNet(cam.elt, () => {});
+          poseNet.on('pose', (results) => { poses = results; });
+          camOn = true;
+          document.getElementById('cta-pose3')?.remove();   // remove correct CTA
+          p.loop();
+        });
+        cam.size(640, 480);
+        cam.hide();
+      } catch(e) {
+        alert('Camera requires https or localhost.');
+      }
+    };
+
+    function detectSpinCycles() {
+      if (!camOn || !poses.length || spinInProgress) return;
+      const nose = poses[0]?.pose?.nose;
+      if (!nose) return;
+
+      const noseX = nose.x;
+      if (lastNoseX != null) {
+        const dx = noseX - lastNoseX;
+        if (Math.abs(dx) > 5) {
+          const newDir = dx > 0 ? 'right' : 'left';
+          if (direction && newDir !== direction) {
+            const now = p.millis();
+            if (now - lastDirChange < 1000) {
+              spinCount++;
+              spinInProgress = true;
+              spinStartTime = p.millis();
+              for (let i = 0; i < targets.length; i++) targets[i] += p.TWO_PI;
+            }
+            lastDirChange = now;
+          }
+          direction = newDir;
+        }
+      }
+      lastNoseX = noseX;
+    }
+
+    p.draw = () => {
+      p.background(0);
+      p.ortho();
+      if (img) p.image(img, 0, 0, p.width, p.height);
+
+      detectSpinCycles();
+
+      if (spinInProgress) {
+        const elapsed = p.millis() - spinStartTime;
+        for (let i = 0; i < models.length; i++) {
+          const delay = i * spinDelayPerModel;
+          if (elapsed > delay) {
+            if (angles[i] < targets[i]) {
+              angles[i] += 0.05;
+              if (angles[i] > targets[i]) angles[i] = targets[i];
+            }
+          }
+        }
+      }
+
+      p.ambientLight(150);
+      p.directionalLight(255, 255, 255, 0, 0, -1);
+      p.translate(0, -200, 0);
+
+      for (let i = 0; i < models.length; i++) {
+        const m = models[i];
+        if (!m) continue;
+        p.push();
+        p.translate(horizontalOffsets[i], verticalOffsets[i], 0);
+        p.rotateY(angles[i]);
+        p.scale(scales[i], -scales[i], scales[i]);
+        p.ambientMaterial(236, 232, 226);
+        p.noStroke();
+        p.model(m);
+        p.pop();
+      }
+
+      if (spinInProgress && angles.every((a, i) => Math.abs(a - targets[i]) < 0.01)) {
+        spinInProgress = false;
+      }
+    };
+  };
+
+  const poseSketch = new p5(sketchPose);
+
+  // Wire the correct, unique button for this slide
+  document.getElementById('btn-pose3')?.addEventListener('click', () => {
+    poseSketch.startPoseCam();
+  });
+
+  // IMPORTANT: delete the stray "p.preload = () => {...}" block that was here.
+})();
+
+</script>
+<script src="script.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const scroller = document.querySelector('.scroll-container') || null;
+
+  // Find Vimeo/YouTube iframes and enforce "muted, no-autoplay" defaults.
+  const players = Array.from(document.querySelectorAll('iframe'))
+    .filter(f => /vimeo\.com|youtube\.com|youtube-nocookie\.com/.test(f.src));
+
+  players.forEach(f => {
+    const url = new URL(f.src, location.href);
+
+    if (/vimeo\.com/.test(url.hostname)) {
+      url.searchParams.delete('autoplay');           // don’t start yet
+      url.searchParams.set('muted', '1');            // always muted
+      f.allow = (f.allow || '') + '; autoplay; fullscreen; picture-in-picture';
+      f.src = url.toString();
+      f.dataset.playerKind = 'vimeo';
+      f.addEventListener('load', () => {
+        // ensure paused after load
+        f.contentWindow?.postMessage({ method: 'pause' }, '*');
+      });
+    } else if (/youtube/.test(url.hostname)) {
+      url.searchParams.delete('autoplay');           // don’t start yet
+      url.searchParams.set('mute', '1');             // always muted
+      url.searchParams.set('playsinline', '1');
+      url.searchParams.set('enablejsapi', '1');      // needed to control via postMessage
+      f.allow = (f.allow || '') + '; autoplay; picture-in-picture';
+      f.src = url.toString();
+      f.dataset.playerKind = 'youtube';
+      f.addEventListener('load', () => {
+        f.contentWindow?.postMessage(JSON.stringify({
+          event: 'command', func: 'pauseVideo', args: []
+        }), '*');
+      });
+    }
+
+    // Optional: lighter network use
+    f.loading = f.loading || 'lazy';
+  });
+
+  // Observe each slide and play/pause any embeds inside it.
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      const frames = e.target.querySelectorAll('iframe');
+      frames.forEach(f => {
+        const kind = f.dataset.playerKind;
+        if (!kind) return;
+
+        if (e.isIntersecting) {
+          // PLAY when section is in view
+          if (kind === 'vimeo') {
+            f.contentWindow?.postMessage({ method: 'play' }, '*');
+          } else if (kind === 'youtube') {
+            f.contentWindow?.postMessage(JSON.stringify({
+              event: 'command', func: 'playVideo', args: []
+            }), '*');
+          }
+        } else {
+          // PAUSE when out of view
+          if (kind === 'vimeo') {
+            f.contentWindow?.postMessage({ method: 'pause' }, '*');
+          } else if (kind === 'youtube') {
+            f.contentWindow?.postMessage(JSON.stringify({
+              event: 'command', func: 'pauseVideo', args: []
+            }), '*');
+          }
+        }
+      });
+    });
+  }, { root: scroller, threshold: 0.6 });
+
+  document.querySelectorAll('.snap-section').forEach(sec => io.observe(sec));
+});
+</script>
+<script>
+(() => {
+  function initMMSlider(id){
+    const el = document.getElementById(id);
+    if(!el) return;
+
+    // images from data attribute
+    let sources = [];
+    try { sources = JSON.parse(el.dataset.images || '[]'); } catch(e){ sources = []; }
+    if(!sources.length) return;
+
+    const imgEl = el.querySelector('img');
+    let i = 0;
+
+    // preload to avoid flicker
+    const cache = sources.map(src => { const im = new Image(); im.src = src; return im; });
+
+    function show(idx){
+      i = (idx + sources.length) % sources.length;
+      imgEl.src = sources[i];
+    }
+    show(0);
+
+    // click on half: right->next, left->prev
+    el.addEventListener('click', (e) => {
+      const rect = el.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      if (x > rect.width / 2) show(i + 1); else show(i - 1);
+    });
+
+    // invisible hotzones also handle clicks (redundant but precise)
+    el.querySelector('.mm-hotzone.right')?.addEventListener('click', (e)=>{ e.stopPropagation(); show(i+1); });
+    el.querySelector('.mm-hotzone.left') ?.addEventListener('click', (e)=>{ e.stopPropagation(); show(i-1); });
+
+    // keyboard (when focused)
+    el.tabIndex = 0;
+    el.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') { show(i+1); e.preventDefault(); }
+      else if (e.key === 'ArrowLeft') { show(i-1); e.preventDefault(); }
+    });
+
+    // touch swipe
+    let startX = null;
+    el.addEventListener('touchstart', (e) => { startX = e.changedTouches[0].clientX; }, { passive: true });
+    el.addEventListener('touchend', (e) => {
+      if (startX == null) return;
+      const dx = e.changedTouches[0].clientX - startX;
+      if (Math.abs(dx) > 30) { dx < 0 ? show(i+1) : show(i-1); }
+      startX = null;
+    }, { passive: true });
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    initMMSlider('mm-slider');
+  });
+})();
+</script>
+
+</body>
+
+</html>

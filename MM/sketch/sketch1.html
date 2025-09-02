@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.11.7/lib/p5.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.11.7/lib/addons/p5.sound.min.js">
+    </script>
+    <script src="libraries/opentype.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/opentype.js@1.3.4/dist/opentype.min.js"></script>
+    <meta charset="utf-8" />
+
+  </head>
+  <body>
+    <main>
+    </main>
+    <script>let dots = [];
+let video;
+let otFont; // opentype font
+let spacing = 10;
+
+
+function preload() {
+  font = loadFont('fonts/XanhMono-Regular.ttf');
+}
+
+function setup() {
+  createCanvas(1010, 600);
+    background(255, 10);
+  video = createCapture(VIDEO);
+  video.size(width / spacing, height / spacing);
+  video.hide();
+  opentype.load('fonts/XanhMono-Regular.ttf', (err, f) => {
+    if (err) {
+      console.error('Font load error:', err);
+      return;
+    }
+    otFont = f;
+  });
+}
+
+function generateDots(f, fontSize) {
+    background(255, 10);
+  
+  dots = [];
+
+  let lineHeight = fontSize * 0.95;
+  let lines = ['MODEL', 'MINORITY'];
+  let xStart = 10;
+  let yStart = fontSize;
+
+  lines.forEach((line, lineIndex) => {
+    let x = xStart;
+    let y = yStart + lineIndex * lineHeight;
+
+    for (let i = 0; i < line.length; i++) {
+      let glyph = f.charToGlyph(line[i]);
+      let path = glyph.getPath(x, y, fontSize);
+      let cmds = path.commands;
+
+      let lastX = 0, lastY = 0;
+
+      for (let j = 0; j < cmds.length; j++) {
+        let cmd = cmds[j];
+
+        if (cmd.type === 'M') {
+          lastX = cmd.x;
+          lastY = cmd.y;
+        } else if (cmd.type === 'L') {
+          for (let t = 0; t <= 1; t += 0.2) {
+            let px = lerp(lastX, cmd.x, t);
+            let py = lerp(lastY, cmd.y, t);
+            dots.push({ x: px, y: py });
+          }
+          lastX = cmd.x;
+          lastY = cmd.y;
+        } else if (cmd.type === 'Q') {
+          for (let t = 0; t <= 1; t += 0.2) {
+            let px = quadraticBezier(lastX, cmd.x1, cmd.x, t);
+            let py = quadraticBezier(lastY, cmd.y1, cmd.y, t);
+            dots.push({ x: px, y: py });
+          }
+          lastX = cmd.x;
+          lastY = cmd.y;
+        } else if (cmd.type === 'C') {
+          for (let t = 0; t <= 1; t += 0.2) {
+            let px = bezierPoint(lastX, cmd.x1, cmd.x2, cmd.x, t);
+            let py = bezierPoint(lastY, cmd.y1, cmd.y2, cmd.y, t);
+            dots.push({ x: px, y: py });
+          }
+          lastX = cmd.x;
+          lastY = cmd.y;
+        }
+      }
+
+      x += glyph.advanceWidth * (fontSize / f.unitsPerEm);
+    }
+  });
+}
+
+
+function drawDots() {
+
+  fill(255, 0, 0);
+  noStroke();
+
+  // Pick random 2.7% indices on every frame
+  let totalBigDots = Math.floor(dots.length * 0.027);
+  let indices = [...Array(dots.length).keys()];
+  shuffle(indices, true);
+  let bigSet = new Set(indices.slice(0, totalBigDots));
+
+  for (let i = 0; i < dots.length; i++) {
+    let pt = dots[i];
+    let size = bigSet.has(i) ? 5 : 1;
+     fill(255, 0, 0);
+      noStroke();
+    ellipse(pt.x, pt.y, size, size);
+  }
+
+  console.log("Total dots:", dots.length);
+}
+
+
+
+function quadraticBezier(a, b, c, t) {
+  return (1 - t) * (1 - t) * a + 2 * (1 - t) * t * b + t * t * c;
+}
+function draw() {
+  if (!otFont) return; // wait for font
+  background(255, 10);
+  // --- 1. Draw webcam background ---
+  video.loadPixels();
+
+  for (let y = 0; y < video.height; y++) {
+    for (let x = 0; x < video.width; x++) {
+      let index = (x + y * video.width) * 4;
+      let r = video.pixels[index + 0];
+      let g = video.pixels[index + 1];
+      let b = video.pixels[index + 2];
+
+      let bright = (r + g + b) / 3;
+      let dotSize = bright > 180 ? 5 : 1;
+
+      fill(255, 0, 0); // faded black so text pops more
+      noStroke();
+      ellipse(x * spacing, y * spacing, dotSize, dotSize);
+    }
+  }
+
+  // --- 2. Draw font-based dots on top ---
+  let fontSize = map(mouseX, 0, width, 20, 250);
+  generateDots(otFont, fontSize);
+  drawDots();
+}
+
+
+
+</script>
+  </body>
+</html>
