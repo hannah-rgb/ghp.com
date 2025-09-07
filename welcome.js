@@ -191,10 +191,11 @@ document.querySelectorAll('.thumb-wrapper').forEach(wrapper => {
   }
 
   // Normal navigation for the rest
-  wrapper.addEventListener('click', () => {
-    if (SKIP_IDS.has(baseName)) return;
-    window.location.href = `${baseName}.html`;
-  });
+wrapper.addEventListener('click', () => {
+  if (SKIP_IDS.has(baseName)) return;
+  window.location.href = `${baseName}/`;   // folder with index.html inside
+});
+
 });
 
 document.addEventListener('mousemove', (e) => {
