@@ -298,11 +298,11 @@ figure > img { grid-area: 1 / 1; width: 100%; height: auto; display: block; }
 
 @font-face {
   font-family: 'PP';
-  src: url('MM/fonts/Basel-mono.otf') format('opentype');
+  src: url('MDes_Thesis_2025/fonts/Basel-mono.otf') format('opentype');
 }
 @font-face {
   font-family: 'PPL';
-  src: url('MM/fonts/Basel-mono-light.otf') format('opentype');
+  src: url('MDes_Thesis_2025/fonts/Basel-mono-light.otf') format('opentype');
 }
 * {
   margin: 0;
@@ -312,7 +312,7 @@ figure > img { grid-area: 1 / 1; width: 100%; height: auto; display: block; }
 }
 @font-face {
   font-family: 'PPstack';
-  src: url('MM/fonts/IBM-light.otf') format('opentype');
+  src: url('MDes_Thesis_2025/fonts/IBM-light.otf') format('opentype');
 
 }
 
