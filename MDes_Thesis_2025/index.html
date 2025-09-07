@@ -8,7 +8,7 @@
   <link rel="icon" href="/MDes_Thesis_2025/assets/pp_favicon.svg" type="image/x-icon" />
 
   <!-- Link to your stylesheet -->
-  <link rel="stylesheet" href="MDes_Thesis_2025/styleMM.css" />
+  <link rel="stylesheet" href="style.css" />
   <!-- ml5 for PoseNet -->
 
 </head>
@@ -635,10 +635,10 @@ Armin Hofmann, <br>1961
   <div id="mm-slider"
        class="mm-slider"
        data-images='[
-         "MDes_Thesis_2025/assets/mm_about_1.webp",
-         "MDes_Thesis_2025/assets/mm_about_2.webp",
-         "MDes_Thesis_2025/assets/mm_about_3.webp",
-         "MDes_Thesis_2025/assets/mm_about_4.webp"
+         "assets/mm_about_1.webp",
+         "assets/mm_about_2.webp",
+         "assets/mm_about_3.webp",
+         "assets/mm_about_4.webp"
        ]' style="max-height:60vh;">
     <img alt="Model Minority still" />
     <div class="mm-hotzone left" aria-hidden="true"></div>
@@ -682,7 +682,7 @@ Armin Hofmann, <br>1961
     <section class="snap-section">
       <div class="grid-section">
     <div class="start-1 col-span-8">
-      <video class="vid" src="MDes_Thesis_2025/assets/layer.mp4"
+      <video class="vid" src="assets/layer.mp4"
              loop autoplay muted playsinline controls></video>
     </div>
       </div>
@@ -692,17 +692,17 @@ Armin Hofmann, <br>1961
     <section class="snap-section">
       <div class="grid-section">
     <div class="start-2 col-span-2" style="align-self:center;">
-      <video class="vid" src="MDes_Thesis_2025/assets/layer-eye-move2.mp4"
+      <video class="vid" src="assets/layer-eye-move2.mp4"
              loop autoplay muted playsinline controls></video>
              <p class="body edge-dashes">Horizontal Location</p>
     </div>
         <div class="start-4 col-span-2" style="align-self:center;">
-      <video class="vid" src="MDes_Thesis_2025/assets/layer-closer2.mp4"
+      <video class="vid" src="assets/layer-closer2.mp4"
              loop autoplay muted playsinline controls></video>
              <p class="body edge-dashes">distance</p>
     </div>
             <div class="start-6 col-span-2" style="align-self:center;">
-      <video class="vid" src="MDes_Thesis_2025/assets/layer-bg.mp4"
+      <video class="vid" src="assets/layer-bg.mp4"
              loop autoplay muted playsinline controls></video>
              <p class="body edge-dashes">Time & Location</p>
     </div>
@@ -714,15 +714,15 @@ Armin Hofmann, <br>1961
     <div class="grid-section">
     <div class="start-3 col-span-2" style="align-self:start; padding-top:10vh;">
       <video class="vid" style="grid-row:1; align-self:start;"
-      src="MDes_Thesis_2025/assets/layer-s-1.mp4"loop autoplay muted playsinline controls></video>
+      src="assets/layer-s-1.mp4"loop autoplay muted playsinline controls></video>
       <video class="vid" style="grid-row:2; align-self:start;"
-      src="MDes_Thesis_2025/assets/layer-silver-2.mp4"loop autoplay muted playsinline controls></video>
+      src="assets/layer-silver-2.mp4"loop autoplay muted playsinline controls></video>
       <p class="captionL" style="padding-bottom:10vh;"> <br>Silver print <br>reproduced in digital </p>
 
     </div>
         <div class="start-5 col-span-2" style="align-self:start; padding-top:10vh;">
       <video class="vid" style="grid-row:1; align-self:start;"
-      src="MDes_Thesis_2025/assets/layer-silver.mp4"loop autoplay muted playsinline controls></video>
+      src="assets/layer-silver.mp4"loop autoplay muted playsinline controls></video>
     </div>
     </div>
 </section>
@@ -731,7 +731,7 @@ Armin Hofmann, <br>1961
     <section class="snap-section">
       <div class="grid-section">
     <div class="start-1 col-span-8">
-      <video class="vid" src="MDes_Thesis_2025/assets/civic-timelapse.mp4"
+      <video class="vid" src="assets/civic-timelapse.mp4"
              loop autoplay muted playsinline controls></video>
     </div>
       </div>
@@ -740,10 +740,10 @@ Armin Hofmann, <br>1961
        <section class="snap-section">
       <div class="grid-section">
     <div class="start-2 col-span-3">
-    <img src="MDes_Thesis_2025/assets/roxy1.jpg" alt="" style="width:100%; height:auto; object-fit:cover;"></img>
+    <img src="assets/roxy1.jpg" alt="" style="width:100%; height:auto; object-fit:cover;"></img>
 
     </div>   <div class="start-5 col-span-3">
-    <img src="MDes_Thesis_2025/assets/roxy2.jpg" alt="" style="width:100%; height:auto; object-fit:cover;"></img>
+    <img src="assets/roxy2.jpg" alt="" style="width:100%; height:auto; object-fit:cover;"></img>
 
     </div>
       </div>
@@ -754,7 +754,7 @@ Armin Hofmann, <br>1961
     <section class="snap-section">
       <div class="grid-section">
     <div class="start-1 col-span-8">
-      <video class="vid" src="MDes_Thesis_2025/assets/roxy.mp4"
+      <video class="vid" src="assets/roxy.mp4"
              loop autoplay muted playsinline controls></video>
     </div>
       </div>
@@ -763,7 +763,7 @@ Armin Hofmann, <br>1961
             <!-- SLIDE 16: MM-mockup -->
 <section class="snap-section">
       <div class="start-1 col-span-8" >
-      <img src="MDes_Thesis_2025/assets/mm-mockup.png" alt="" style="width:100%; height:auto; object-fit:cover;"> 
+      <img src="assets/mm-mockup.png" alt="" style="width:100%; height:auto; object-fit:cover;"> 
         </div> 
   </section>
 
@@ -842,7 +842,7 @@ const sketchAudio = (p) => {
     ],
   ];
 
-  p.preload = () => { img = p.loadImage('MDes_Thesis_2025/armin/bird1.png', ()=>{}, ()=>{}); };
+  p.preload = () => { img = p.loadImage('armin/bird1.png', ()=>{}, ()=>{}); };
 
   p.setup = () => {
     wrap = document.getElementById('p5-wrap-1');
@@ -911,7 +911,7 @@ let p5Cam;
 const sketchCam = (p) => {
   let img, cam, camOn = false, wrap, spots = [];
 
-  p.preload = () => { img = p.loadImage('MDes_Thesis_2025/weingart/typo.png'); };
+  p.preload = () => { img = p.loadImage('weingart/typo.png'); };
 
   p.setup = () => {
     wrap = document.getElementById('p5-wrap-2');
@@ -1017,8 +1017,8 @@ document.addEventListener('DOMContentLoaded', () => {
    Sketch 3 — GISELLE
    ========================= */
 (() => {
-  const MODEL_PATH = 'MDes_Thesis_2025/Giselle/';
-  const IMG_PATH   = 'MDes_Thesis_2025/Giselle/Gbx.png';
+  const MODEL_PATH = 'Giselle/';
+  const IMG_PATH   = 'Giselle/Gbx.png';
 
   const sketchPose = (p) => {
     let wrap, cnv, cam, camOn = false, poseNet, poses = [];
@@ -1162,7 +1162,7 @@ document.addEventListener('DOMContentLoaded', () => {
 })();
 
 </script>
-<script src="MDes_Thesis_2025/scriptMM.js"></script>
+<script src="script.js"></script>
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
