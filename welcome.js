@@ -168,7 +168,7 @@ setTimeout(() => {
   document.querySelector('.thumbnail-row')?.scrollIntoView({ behavior: 'auto', block: 'center' });
 }, 100);
 
-const SKIP_IDS = new Set(['MachSchwarz', 'MM', 'OpenSense', 'snake', 'arc', '2025', 'shakeshack', 'Tmax', 'select', 'Humanitico']); // add more here
+const SKIP_IDS = new Set(['MachSchwarz', 'OpenSense', 'snake', 'arc', '2025', 'shakeshack', 'Tmax', 'select', 'Humanitico']); // add more here
 
 document.querySelectorAll('.thumb-wrapper').forEach(wrapper => {
   const img = wrapper.querySelector('img');

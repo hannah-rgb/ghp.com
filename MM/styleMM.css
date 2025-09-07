@@ -1,0 +1,938 @@
+:root{
+  --cols: 8;
+  --gap: 0.6vw;
+  --pad: 0.6vh;
+  --colw: calc((104.5vw - (var(--cols) - 1) * var(--gap) - 2 * var(--pad)) / var(--cols));
+  --bg: #000;   /* black site background */
+  --fg: #fff;   /* default text color on black */
+  --header-h: 13pt;   /* set if you later use a fixed header */
+  --footer-h: 50px; 
+  --body-bg: #111;
+  --body-fg: #111;  
+  --cursor-white-16: url("data:image/svg+xml;utf8,\<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16'>\<circle cx='8' cy='8' r='7' fill='white'/></svg>");
+  --cursor-white-32: url("data:image/svg+xml;utf8,\<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20'>\<circle cx='10' cy='10' r='10' fill='white'/></svg>");
+}
+
+/* #edge-marks { opacity: 0; transition: opacity .2s ease; } */
+.edge-dashes{
+  position: relative;
+}
+.edge-dashes::before{
+  content:"";
+  position: absolute; inset: 0;
+  pointer-events: none;
+  --len: 24px; --dot: 2px;
+  background:
+    linear-gradient(#fff 0 0) no-repeat, linear-gradient(#fff 0 0) no-repeat,
+    linear-gradient(#fff 0 0) no-repeat, linear-gradient(#fff 0 0) no-repeat;
+  background-size: var(--len) var(--dot), var(--len) var(--dot),
+                   var(--len) var(--dot), var(--len) var(--dot);
+  background-position: 0 0, 100% 0, 0 100%, 100% 100%;
+  opacity: 1;
+  transition: opacity .1s ease;
+}
+/* show only on hover/focus for the index columns */
+#index .index-col.edge-dashes::before{ opacity: 0; }
+#index .index-col.edge-dashes:hover::before,
+#index .index-col.edge-dashes:focus-within::before{ opacity: 1; }
+
+/* optional: touch devices (no hover) — always show when active */
+@media (hover: none){
+  #index .index-col.edge-dashes:active::before{ opacity: 1; }
+}
+
+/* Make edge markers render above the column guides and header/footer */
+.fixed-header, .fixed-footer{ z-index: 100000; }  /* keep text above markers if needed */
+
+/* one grid section helper + zero figure margins */
+.grid-section{
+  display: grid;
+  grid-template-columns: repeat(var(--cols), minmax(0,1fr));
+  gap: var(--gap);
+  padding-left: 1.2vw;
+  padding-right: 1.2vw;
+  align-items: start;         /* keep content top-aligned */
+}
+.grid-section.hero{
+  /* 3 rows: labels, title, subtitle — each sized to content */
+  grid-template-rows: max-content max-content max-content;
+  row-gap: 0;                    /* no vertical gutter */
+  column-gap: var(--gap);        /* keep horizontal gutter */
+  align-items: start;            /* items top inside their cells */
+  align-content: start;          /* pack rows at the top (no extra space between rows) */
+  min-height: auto;              /* override 100vh on this one */
+  grid-auto-rows: max-content;   /* safety if a 4th row appears */
+}
+.grid-section.hero2{
+  /* 3 rows: labels, title, subtitle — each sized to content */
+  row-gap: 0vh;                    /* no vertical gutter */
+  align-items: center;            /* items top inside their cells */
+  align-content: center;          /* pack rows at the top (no extra space between rows) */
+  min-height: 100vh;              /* override 100vh on this one */
+  /* grid-auto-rows: max-content;   safety if a 4th row appears */
+}
+
+.quote{
+    background: var(--body-bg);
+  color: var(--fg);
+  /* padding: 1rem; */
+  line-height: 1.2;
+  text-align: left;
+  font-size: 13pt;
+  text-transform: uppercase;
+  padding:0.4em 0em 0.6em 2.4vw;
+}
+
+.quote2{
+    background: var(--body-bg);
+  color: var(--fg);
+  /* padding: 1rem; */
+  line-height: 1.2;
+  text-align: left;
+  font-size: 13pt;
+  text-transform: uppercase;
+  /* padding:0.4em 0em 0.6em 2.4vw; */
+}
+
+/* start hidden */
+.hero2 .img-1, .hero2 .cap-1,
+.hero2 .img-2, .hero2 .cap-2,
+.hero2 .img-3, .hero2 .cap-3{
+  opacity: 0;
+  transition: opacity .1s ease;
+}
+
+/* show when the corresponding trigger OR target is hovered */
+.hero2:has(.trigger-1:hover) .img-1,
+.hero2:has(.img-1:hover)     .img-1,
+.hero2:has(.cap-1:hover)     .img-1{ opacity: 1; }
+
+.hero2:has(.trigger-2:hover) .img-2,
+.hero2:has(.img-2:hover)     .img-2,
+.hero2:has(.cap-2:hover)     .img-2 { opacity: 1; }
+
+.hero2:has(.trigger-3:hover) .img-3,
+.hero2:has(.img-3:hover)     .img-3,
+.hero2:has(.cap-3:hover)     .img-3 { opacity: 1; }
+
+.hero2:has(.trigger-1:hover) .cap-1,
+.hero2:has(.img-1:hover)     .cap-1,
+.hero2:has(.cap-1:hover)     .cap-1{ opacity: 0.5; }
+
+.hero2:has(.trigger-2:hover) .cap-2,
+.hero2:has(.img-2:hover)     .cap-2,
+.hero2:has(.cap-2:hover)     .cap-2{ opacity: 0.5; }
+
+.hero2:has(.trigger-3:hover) .cap-3,
+.hero2:has(.img-3:hover)     .cap-3,
+.hero2:has(.cap-3:hover)     .cap-3{ opacity: 0.5; }
+
+/* the figure that holds free-placed lines */
+.figure-lines { position: relative; min-height: 12vh; } /* give it some height */
+
+/* a horizontal rule you can micro-position */
+
+.stack-lines {
+  position: relative;
+  pointer-events: none;     /* so it doesn't block hovers */
+}
+.stack-lines .grid-rule { height:2px; background:#fff; }
+
+html, body { 
+  background: var(--bg); 
+  color: var(--fg); 
+cursor: var(--cursor-white-16), auto;
+}
+a, button, .switcher, .ix-link, .ix-summary, .ix-children, .ix-grandchildren, .ix-greatgrandchildren {
+  cursor: var(--cursor-white-32), auto !important;
+}
+
+/* keep I-beam where appropriate */
+input, textarea { cursor: text; }
+
+.title{
+  font-family: 'PPL';
+  font-size: 80pt;
+  text-align: center;
+  padding-top:0.1em;
+  background-color:#111;
+    text-transform: uppercase;
+}
+
+.subtitle{
+    font-family: 'PPL';
+  font-size: 18pt;
+  text-align: center;
+  padding-bottom:0.8em;
+  background-color:#111;
+}
+
+.mm-title{
+    font-family: 'PPL';
+  font-size: 18pt;
+  text-align: center;
+  padding:0.8em;
+  background-color:#111;
+}
+
+.h3{
+    font-family: 'PPL';
+  font-size: 13pt;
+  text-align: left;
+  padding:0.8em 0 0.8em  var(--colw);
+  text-transform: uppercase;
+}
+.title-by{
+  font-family: 'PP';
+  font-size: 13pt;
+  text-align: left;
+  line-height: 1;
+  padding:0.8em 0em;
+  background-color:#111;
+}
+
+.title-info{
+  font-family: 'PP',                 /* your trial/light mono */
+    'PPstack',       /* first fallback */
+    monospace;
+    line-height: 1;
+  font-size: 13pt;
+  text-align: right;
+  text-justify: inter-word;
+  padding:0.8em 0em;
+  background-color:#111;
+}
+
+.researchQ{
+  padding: .3em 0 0.4em 0;
+  font-family:
+    'PPL',                 /* your trial/light mono */
+    'PPstack',       /* first fallback */
+    monospace;             /* last resort */
+  font-size: 24pt;
+  text-align: center;
+  background-color: #111;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+
+/* apply to any paragraph you consider “body text” */
+p.body, .body-text {
+    font-family: 'PP',                 /* your trial/light mono */
+    'PPstack',       /* first fallback */
+    monospace;
+  /* background: var(--body-bg); */
+  color: var(--fg);
+  /* padding: 1rem; */
+  line-height: 1.2;
+  text-align: center;
+  text-justify: inter-word;
+  font-size: 15pt;
+  text-transform: uppercase;
+    padding:0.4em 0em 0.4em 0;
+    background-color:#111;
+
+}
+
+figure { display: grid; margin: 0; }
+figure > img { grid-area: 1 / 1; width: 100%; height: auto; display: block; }
+
+.captionR {
+  font-family: 'PP',                 /* your trial/light mono */
+    'PPstack',       /* first fallback */
+    monospace;
+  grid-area: 1 / 1;       /* stack on top of the img */
+  align-self: end;        /* push to bottom */
+  padding: .5rem 0 1em;
+  background: rgba(0,0,0,.5);   /* optional */
+  color: white;
+  opacity: 0.5;                /* optional */
+  font-size: 12pt;
+  text-align: right;
+    text-transform: uppercase;
+}
+.captionL {
+  font-family: 'PP',                 /* your trial/light mono */
+    'PPstack',       /* first fallback */
+    monospace;
+  grid-area: 1 / 1;       /* stack on top of the img */
+  align-self: end;        /* push to bottom */
+  padding: 0 0 1em;
+  background: rgba(0,0,0,.5);   /* optional */
+  color: white;
+  opacity: 0.5;                /* optional */
+  font-size: 12pt;
+  text-align: left;
+    text-transform: uppercase;
+}
+
+/* Reusable 8-column container */
+.container-8{
+  display: grid;
+  grid-template-columns: repeat(var(--cols), minmax(0,1fr));
+  gap: var(--gap);
+  padding-left: 1.2vw;
+  padding-right: 1.2vw;
+}
+
+/* Quick span helpers */
+.col-span-1 { grid-column-end: span 1; }
+.col-span-2 { grid-column-end: span 2; }
+.col-span-3 { grid-column-end: span 3; }
+.col-span-4 { grid-column-end: span 4; }
+.col-span-5 { grid-column-end: span 5; }
+.col-span-6 { grid-column-end: span 6; }
+.col-span-7 { grid-column-end: span 7; }
+/* keep a separate helper for true full-bleed */
+.col-span-8 { grid-column: 1 / -1; }
+
+.start-1{grid-column-start:1;}
+.start-2{grid-column-start:2;}
+.start-3{grid-column-start:3;}
+.start-4{grid-column-start:4;}
+.start-5{grid-column-start:5;}
+.start-6{grid-column-start:6;}
+.start-7{grid-column-start:7;}
+.start-8{grid-column-start:8;}
+
+@font-face {
+  font-family: 'PP';
+  src: url('MM/fonts/Basel-mono.otf') format('opentype');
+}
+@font-face {
+  font-family: 'PPL';
+  src: url('MM/fonts/Basel-mono-light.otf') format('opentype');
+}
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'PP';
+  box-sizing: border-box;
+}
+@font-face {
+  font-family: 'PPstack';
+  src: url('MM/fonts/IBM-light.otf') format('opentype');
+
+}
+
+html, body {
+    /* overflow: hidden; */
+    overflow-y: auto;
+  margin: 0 ;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+
+
+body.home-ready header#mainHeader{
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: grid;
+  grid-template-columns: repeat(var(--cols), 1fr);
+  gap: var(--gap);
+  padding: var(--gap);
+}
+
+body.home-ready header#mainHeader .nav-item{
+  position: static;
+  transform: none;
+  font-size: 20px;
+}
+
+/* Make the dropdown align to the grid width */
+body.home-ready #nav-index .dropdown{
+  width: calc(100vw - 2 * var(--pad));
+  left: 0; /* already absolute under the label */
+}
+
+.scroll-container {
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE */
+}
+.scroll-container::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+/* fixed to a grid column: set --start and --span per element */
+.slide1{
+  position: fixed;            /* fixed to viewport */
+  top: 50vh;                  /* vertical position (center) */
+  transform: translateY(-50%);
+  left: calc(var(--pad) + (var(--start) - 1) * (var(--colw) + var(--gap)));
+  width: calc(var(--span) * var(--colw) + (var(--span) - 1) * var(--gap));
+  z-index: 5;
+}
+.center-image{
+  padding-top: 20vh;
+  padding-bottom:20vh;
+}
+
+.fixed-header {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  /* height: auto;*/
+  display: flex;
+  flex-direction: column; /* stack children vertically */
+  align-items: center;    /* center each line horizontally */
+  padding: 25px 0;
+  background: transparent;
+  z-index: 1000;
+  color: white;
+  transition : transform 0.5s ease;
+} 
+
+/* Fixed Header and Footer */
+.grid-columns {
+  position: fixed; inset: 0;
+  display: grid;
+  grid-template-columns: repeat(var(--cols), 1fr);
+  gap: var(--gap);
+  padding: 0 var(--pad);
+  pointer-events: none; 
+  grid-auto-flow:dense;  
+  z-index: 0;
+}
+
+
+.grid-columns > div { 
+  border-left: 0.5px solid rgba(255, 255, 255, 0.3);
+  border-right:0.5px solid rgba(255, 255, 255, 0.3);
+}
+
+.grid-section{
+  display: grid;
+  grid-template-columns: repeat(var(--cols), minmax(0,1fr));
+  gap: var(--gap);
+  padding: 0 var(--pad);
+  min-height: 100vh;     /* full viewport */
+  align-items: center;   /* vertical centering for all children */
+}
+
+/* Index layout (still on your 8-col grid) */
+.grid-section.index{
+  align-items: start;
+  align-content: start;
+  row-gap: 1.2rem;          /* vertical spacing between rows inside the index */
+  column-gap: var(--gap);
+  min-height: 100vh;         /* don't force full viewport height */
+  grid-auto-rows: max-content;
+  padding-top: 0vh;         /* you can tweak or move inline */
+  /* text-align: justify; */
+}
+
+/* One column block */
+.index-col { font-size:14pt; display: block; }
+
+/* Toggle groups */
+.index details { font-size:14pt; margin: .4rem 0 .4rem 0; }
+.index summary { font-size:14pt; list-style: none; cursor: pointer; }
+.index summary::-webkit-details-marker{ font-size:13pt; display:none; }
+
+/* Link-ish buttons (so we can easily stop propagation) */
+.ix-link{
+  all: unset;
+  cursor: pointer;
+  display: inline-block;
+  font-family: 'PP';
+  font-size:14pt; 
+  line-height: 1.2;
+  text-transform: uppercase;
+  padding: .15rem 0 0 2em;
+}
+.ix-terminology{
+  font-size:12pt;
+  text-transform: uppercase;
+  padding: .15rem 0 0 2em;
+}
+/* Children indentation */
+.ix-children{ margin-left: .35rem; display: grid; gap: .15rem; }
+.ix-grandchildren{ margin-left: 0.7em; display: grid; gap: .15rem; }
+.ix-greatgrandchildren{ margin-left: 1em; display: grid; gap: .15rem; }
+
+/* Show slide number badge automatically */
+.ix-link[data-slide]::after{
+  content: "  #" attr(data-slide);
+  opacity: .6;
+  font-size: 14pt;
+  letter-spacing: .02em;
+}
+
+/* Optional: make top-level items slightly bolder */
+.index > .index-col > details > summary .ix-link{font-size:13pt; }
+
+.fixed-header { padding-top:.4rem; z-index: 2002; }          /* ensure above any overlays */
+#edge-marks::before { z-index: 2001; }    /* if you use the edge markers */
+
+.fixed-header [data-label]{
+  opacity: .4;
+  font-family: 'PP';
+transition: opacity .25s ease;  
+font-size: 13pt;
+}
+.fixed-header.is-hidden {
+  opacity: 0;
+  pointer-events: none; /* not clickable */
+}
+.fixed-header .is-active{
+  opacity: 1;
+  font-family: 'PP';
+  font-size: 13pt;
+}
+/* Make footer follow the 8-column system */
+.fixed-footer{
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  height: 20pt;
+  z-index: 1000;
+  color: white;
+  opacity: 0.5;
+  font-family: 'PP', sans-serif;
+}
+
+.header-grid{
+  display: grid;
+  grid-template-columns: repeat(var(--cols), minmax(0,1fr));
+  gap: var(--gap);
+  padding-left: var(--pad);
+  padding-right: var(--pad);
+  width: 100vw;
+  align-items: center;
+  font-size: 13pt;
+}
+
+.footer-grid{
+  display: grid;
+  grid-template-columns: repeat(var(--cols), minmax(0,1fr));
+  gap: var(--gap);
+  padding-left: var(--pad);
+  padding-right: var(--pad);
+  width: 100vw;
+  align-items: center;
+  font-size: 13pt;
+}
+
+/* Place the 5 footer items onto the 8 columns */
+.footer-grid > :nth-child(1){ grid-column: 1 / span 1; }      /* POST-POSTER */
+.footer-grid > :nth-child(2){ grid-column: 4 / span 1; 
+                              justify-self: left; }         /* slide number */
+.footer-grid > :nth-child(3){ grid-column: 6 / span 1; }      /* MDES THESIS PROJECT */
+.footer-grid > :nth-child(4){ grid-column: 7 / span 1; }      /* MDES THESIS PROJECT */
+.footer-grid > :nth-child(5){ grid-column: 8 / span 1; 
+                              text-align: left; } /* © credit */
+
+.header-grid > :nth-child(1){ grid-column: 1 / span 1; }
+.header-grid > :nth-child(2){ grid-column: 2 / span 1; }
+.header-grid > :nth-child(3){ grid-column: 3 / span 1; }
+.header-grid > :nth-child(4){ grid-column: 4 / span 1; }
+.header-grid > :nth-child(5){ grid-column: 5 / span 1; }
+
+
+
+.center-slide-number {
+    top: 0vh;
+    margin-top: 0vh;
+    margin-bottom: 0vw;
+  text-align: left;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Scroll Snap Container */
+.scroll-container {
+  position: absolute;
+  top: 0vh; /* height of header */
+  bottom: 1vh; /* height of footer */
+  width: 100vw;
+  left: 0;
+  right: 0;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+}
+
+/* Snap Section */
+.snap-section {
+  width: 100vw;
+  scroll-snap-align: start;
+  position: relative;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+/* Vertical default section layout */
+.snap-section.vertical-section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  overflow-y: auto;
+}
+
+
+.tall-image {
+  height: auto;
+  max-height: none;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  object-position: top;
+  margin: 0 auto;
+  display: block;
+}
+
+.hidden-sections {
+  display: none;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+.reveal-section {
+  height: 100vh;
+  width: 100vw;
+  display: none; /* all hidden by default */
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.reveal-button {
+  position: absolute;
+  top: 43vh;
+  left: 95%;
+  transform: translateX(-50%);
+  font-size: 13pt;
+  font-family: 'PP', sans-serif;
+  color: white;
+  cursor: pointer;
+  z-index: 20; /* Must be higher than .section-image */
+  user-select: none;
+  transition: opacity 0.3s ease;
+  pointer-events: auto;
+}
+
+
+.reveal-button:hover {
+  opacity: 0.7;
+}
+.overlay-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.overlay-slide.visible {
+  opacity: 1;
+  pointer-events: all;
+  z-index:15;
+}
+
+.grid-section iframe{
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 16;   /* pick your ratio */
+  border: 0;
+}
+
+.grid-section iframe2{
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;   /* pick your ratio */
+  border: 0;
+}
+
+/* The wrapper that p5 will fill */
+.p5-box{
+  width: 100%;
+  /* choose ONE of these height strategies */
+min-height: 60vh;
+  /* A) keep your original 570×800 coordinate ratio */
+  aspect-ratio: 57 / 80;
+
+  /* OR B) a fixed viewport height
+  min-height: 60vh; */
+
+  background: #F0EADF;   /* matches your sketch background */
+
+  position:relative; min-height:48vh;
+}
+.p5-box canvas{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  z-index: 1;
+}
+/* Make the canvas fully fill the wrapper */
+#p5-wrap canvas{
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
+.p5-box.rivers{
+  width: 100%;
+  /* tall enough for two rows; tweak as you like */
+  min-height: 80vh;
+  background: #000; /* black page bg; white graphics pop */
+}
+.p5-box.rivers canvas{
+  display:block;
+  width:100% !important;
+  height:100% !important;
+}
+
+.p5-cta{
+  position:absolute; 
+  inset:0; 
+  display:flex; 
+  align-items:center; 
+  justify-content:center;
+  /* background:rgba(0,0,0,.35);  */
+  backdrop-filter:saturate(100%) blur(2px);
+  z-index:50;
+}
+.p5-cta button{
+  font-family: 'PP', monospace;
+  font-size: 16px;
+  padding: .5rem 0.5rem;
+  border-color: rgba(0,0,0,0);
+  background: rgba(0,0,0,100);
+  color: #fff;
+  cursor: pointer;
+  text-transform:uppercase;
+}
+
+.p5-cta button:hover,
+#cta-pose3:hover{
+  color: #000;
+  background: white;
+}
+
+.video-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* optional: prevents video from blocking scroll */
+  z-index: 2;
+}
+
+.vid{
+  display:block;
+  width:100%;     /* fills the column span */
+  height:auto;    /* keeps aspect ratio */
+  max-width:100%;
+}
+
+
+.armin {
+  margin-left: 2.4vw;
+  width: 36.3vw;
+  height: 95%;
+  padding-top: 4.7vh;
+  padding-left: 19.1vw;
+  object-fit: cover;
+  border: none;
+}
+
+.wolfgang {
+  margin-left: 1.2vw;
+  width: 36.3vw;
+  height: 95%;
+  padding-top: 4.4vh;
+  padding-left: 21.2vw;
+  object-fit: cover;
+  border: none;
+}
+.giselle {
+  width: 36.3vw;;
+  height: 105%;
+  padding-top: 4.4vh;
+  padding-left: 22.7vw;
+  object-fit: cover;
+  border: none;
+}
+.giselle2 {
+  width: 56.2vw;
+  height: 100%;
+  padding-top: 4.4vh;
+  padding-left: 2.1vw;
+  object-fit: cover;
+  border: none;
+}
+.mobydick_mockup{
+  padding:0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+
+}
+#open_sense{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+}
+/* Default full-screen image style */
+.section-image.fullscreen {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  pointer-events: none;
+  display: block;
+}
+
+/* For tall images — not positioned absolute */
+.section-image.tall-image {
+  position: relative;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: none;
+  object-fit: contain;
+  object-position: top;
+  margin-top: 0;
+  pointer-events: none;
+  display: block;
+}
+
+
+/* Embedded Media */
+.media-wrapper {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  margin-top:0;
+  justify-content: left;
+  align-items: left top;
+  width: 100%;
+  height: 100%;
+  pointer-events: auto;
+}
+
+.snap-section.overlayed-media {
+  position: relative;
+}
+
+
+.snap-section.overlayed-media .media-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 2;
+  overflow: visible; /* ✅ Allow overflow if iframe is larger */
+}
+
+.media-frame {
+
+  width: 200vw;   /* ✅ Actually bigger than screen */
+  height: 110vh;
+  margin-left: 21.4vw;  /* ✅ Shift left so it's centered again */
+  margin-top: 17vh;
+  border: none;
+  object-fit: cover;
+  pointer-events: auto;
+}
+
+.horizontal-scroll-section {
+  scroll-snap-align: start;
+  overflow: auto;
+  position: relative;
+  height: 100vh;
+}
+
+.horizontal-wrapper {
+  position: relative;
+  display: flex;
+  height: 100%;
+  width: max-content;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+}
+
+.horizontal-image {
+  height: 100vh;
+  flex-shrink: 0;
+}
+
+.horizontal-wrapper::-webkit-scrollbar {
+  display: none; 
+}
+.half-space {
+  display: inline-block;
+  width: 0.5ch;   /* half a character cell in a monospace */
+  height: 1em;
+}
+.switcher { cursor: pointer; user-select: none; }
+.stack{
+  position: relative;
+  min-height: 100vh; /* keep same height as other slides */
+  overflow: hidden;
+}
+.stack-slide{
+  position: absolute;
+  inset: 0;              /* top:0 right:0 bottom:0 left:0 */
+  opacity: 0;
+  pointer-events: none;  /* don’t capture clicks when hidden */
+  transition: opacity .35s ease;
+}
+.stack-slide.is-active{
+  opacity: 1;
+  pointer-events: auto;
+}
+#mm-stack:focus { outline: none; }
+
+.mm-slider{
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+.mm-slider img{
+  display:block;
+  width:100%;
+  height:auto;
+  object-fit:cover;
+}
+
+/* Invisible click areas (no visible buttons) */
+.mm-hotzone{
+  position:absolute;
+  top:0; bottom:0;
+  width:50%;
+  cursor:pointer;
+  /* If you want a debug overlay while testing, uncomment:
+  background: rgba(255,0,0,.05);
+  */
+}
+.mm-hotzone.left{ left:0; }
+.mm-hotzone.right{ right:0; }
+
+/* Optional: focus ring if user tabs into slider for arrow keys */
+.mm-slider:focus{
+  outline: 0px dashed rgba(255,255,255,0.35);
+  outline-offset: 0px;
+}
