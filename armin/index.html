@@ -421,9 +421,10 @@
     });
 
     // Logo and About navigation
-    document.getElementById('nav-g')?.addEventListener('click', () => {
-      window.location.href = 'index.html?skipWelcome=true';
-    });
+document.getElementById('nav-g').addEventListener('click', function () {
+  window.location.href = '/index.html?skipWelcome=true';
+});
+
     document.getElementById('nav-about')?.addEventListener('click', () => {
       window.location.href = 'about.html';
     });
