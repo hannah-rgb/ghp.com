@@ -1,0 +1,472 @@
+/* Reset and font */
+
+@font-face {
+  font-family: 'Commercial';
+  src: url('fonts/commercial.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Commercial';
+  box-sizing: border-box;
+}
+html, body {
+  height: 100%;
+  margin: 0;
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  scroll-padding-top: 10vh; /* This helps only when snapping to inner containers */
+
+    scrollbar-width: none;       /* Firefox */
+  -ms-overflow-style: none;
+}
+body::-webkit-scrollbar {
+  display: none;               /* Chrome, Safari, Opera */
+}
+body {
+ cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32'><text x='7' y='24' font-size='28' fill='rgb(255,0,0)' font-family='Arial'>⊹</text></svg>") 16 16, auto;}
+
+
+main {
+  margin-top: 45vh;
+  position: relative;
+  z-index: 0;
+}
+
+/* Optional: grid overlay (if you use it) */
+.grid-columns {
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding-left: 0.6vw;
+  padding-right: 0.6vw;
+  z-index: 1000; /* higher than welcome/home content */
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 0.6vw;
+  pointer-events: none;
+}
+
+.grid-columns div {
+  border-left: 0.5px solid rgba(255, 0, 0, 0.3);
+  border-right: 0.5px solid rgba(255, 0, 0, 0.3);
+}
+
+.nav-label {
+  cursor: none;
+}
+/* 
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100px;
+  left: 0;
+  width: 100%;
+  padding: 0.6vw;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 0.6vw;
+}
+
+.dropdown-content img {
+  width: 100%;
+  height: auto;
+  grid-column: span 8;
+} */
+
+.dropdown {
+        display: block;
+        font-size: 13px;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        /* background: white; */
+        padding-top: 0.6vw;
+        width: calc(100vw - 2 * 0.6vw);
+        grid-column: 1 / span 8;
+        z-index: 10;
+        line-height: 1.2;
+        color: rgb(114, 114, 114);
+        cursor: none;
+
+      }
+
+.dropdown span {
+  display: block;
+  font-size: 13px;
+}
+
+.dropdown a {
+  text-decoration: none;
+  font-size: 13px;
+  color: inherit;
+  display: block; /* behave like span */
+}
+
+
+.dropdown img {
+        display: block;
+        width: 100%;
+        margin-bottom: 0.6vw;
+        object-fit: cover;
+      }
+
+#indexNav:hover .dropdown {
+        display: block;
+      }
+.index-img {
+        width: calc((100vw - (0.6vw * 9)) / 8); /* total width minus 7 gaps divided by 8 columns */
+        height: auto; /* maintain aspect ratio */
+        display: block;
+}
+
+#indexLabel:hover + #dropdown {
+  display: grid;
+}
+
+.AboutH {
+  display:none;
+  grid-column: 5 / span 2;
+  /* text-align: justify; */
+  /* background: white; */
+  padding-top: 4vh;
+  /* padding-left: 16px; */
+  /* padding: 1em; */
+  font-size: 13px;
+  line-height: 1.16;
+  color: rgb(114, 114, 114);
+}
+
+.contact{
+  display:none;
+  grid-column: 8 / span 1;
+  /* text-align: justify; */
+  /* background: white; */
+  padding-top: 4vh;
+  /* padding-left: 16px; */
+  /* padding: 1em; */
+  font-size: 13px;
+  line-height: 1.2;
+    color: rgb(114, 114, 114);
+
+}
+
+.grid-columns div {
+  border-left: 0.5px solid rgba(255, 0, 0, 0.3);
+  border-right: 0.5px solid rgba(255, 0, 0, 0.3);
+}
+.grid-header {
+        display: grid;
+        padding-left: 0.6vw;
+        padding-right: 0.6vw;
+        grid-template-columns: repeat(8, 1fr);
+        gap: 0.6vw;
+        /* padding: 0.6vw; */
+        position: relative;
+        z-index: 2;
+        /* background: white; */
+      }
+
+      .nav-item {
+        grid-column: span 1;
+        position: relative;
+        cursor: pointer;
+        font-family: inherit;
+        font-size: 14px;
+        cursor: none;
+      }
+
+  
+header#mainHeader {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  /* background: white; */
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 0.6vw;
+  padding: 0.6vw;
+}
+
+.nav-item {
+  position: absolute;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: normal;
+   -webkit-text-stroke: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: black;
+  transform: translate(-50%, -50%);
+}
+
+/* These positions must match what was used in welcome.js for clickedLabels */
+#nav-g       { left: 0.95vw;  top: 2.2vh; }
+#nav-index   { left: 18.95vw;   top: 3.95vh; width: calc((101vw - (9 * 0.6vw)) / 8); }
+#nav-hannah  { left: 27.25vw;   top: 2.2vh; }
+#nav-park    { left: 51.4vw;   top: 2.2vh; } /*width: calc(((101vw - (9 * 0.6vw)) / 8)*2);*/
+#nav-about   { left: 89.7vw;   top: 3.95vh; }
+#nav-2025    { left: 50vw;   top: 3.1vh; color: red; }
+
+.thumbnail-row {
+  scroll-snap-align: center;
+  height: 45vh;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 0.6vw;
+  padding: 0.6vw;
+  align-content: start;
+  /* box-sizing: border-box; */
+  /* auto-rows: min-content; */
+}
+
+.thumb-img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  /* margin-bottom: 0.4em; */
+  /* padding-bottom: 0.6vw; */
+}
+
+.red-line {
+  position: fixed;
+  top: 3.1vh;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: red;
+  z-index: 999;
+  pointer-events: none;
+}
+.thumb-wrapper {
+  position: relative;
+  display: inline-block; /* ensures the absolute children position correctly */
+  vertical-align: top;
+}
+
+.thumb-number {
+  position: absolute;
+  top: -1.4em;
+  left: 0;
+  font-size: 12px;
+  color: red;
+  font-family: sans-serif;
+  z-index: 2;
+}
+
+.thumb-meta {
+  position: flex;
+  top: 100%;
+  left: 0;
+  padding-top: 5px;
+  font-size: 12px;
+  line-height: 1;
+  font-family: sans-serif;
+  color: red;
+  opacity: 0;
+  transition: opacity 0.2s;
+  white-space: nowrap;
+}
+
+/* already present, keep it */
+.thumb-wrapper.hovered .thumb-meta { opacity: 1; }
+
+.meta-category {
+  color: gray;
+  font-style: italic;
+  /* text-transform: uppercase; */
+  font-size: 11px;
+}
+
+.meta-year {
+  color: gray;
+  font-size: 11px;
+}
+
+body.hide-cursor {
+  cursor: none !important;
+}
+
+/* Hover effect to change the text color to red for the INDEX item only */
+#nav-index:hover,
+#nav-g:hover,
+#nav-hannah:hover,
+#nav-park:hover,
+#nav-about:hover {
+  color: red; 
+  /* background-color: #fff;Change the text color of INDEX to red on hover */
+}
+
+/* Hide the dropdown by default */
+.dropdown {
+  display: none;
+  font-size: 13px;
+  position: absolute;
+  /* background-color: #fff; */
+  min-width: 100%;
+  max-width: 100%; /* Makes the dropdown as wide as the parent */
+  z-index: 1;
+  padding-top: 0;
+  padding-left: 16px; /* To add a small gap between INDEX and the dropdown */
+  cursor: none;
+}
+
+
+#Fondue:hover,
+#photobooth:hover,
+#rheinshine:hover,
+#NNBS:hover,
+#neueden:hover,
+#speeddate:hover,
+#homecoming:hover,
+#waves:hover,
+#armin:hover,
+#weingart:hover,
+#space3:hover,
+#onoffgrid:hover,
+#CMDS:hover,
+#AP:hover,
+#clock:hover,
+#onechfGrafik:hover,
+#Regionale25:hover,
+#Carnault:hover,
+#Museumsnacht:hover,
+#TBD:hover {
+   color: rgba(255, 0, 0, 1);
+   cursor: none;
+}
+
+/* Show the dropdown when the "clicked" class is added to the INDEX */
+#nav-index.clicked .dropdown {
+  display: block;
+}
+
+#nav-index.thumb-wrapper.hovered .dropdown {
+  display: block;
+}
+
+/* Hover effect on img1 and img2 to turn them red only when they are hovered */
+#img1:hover,
+#img2:hover {
+  /* background-color: #fff; */
+  width:100%;
+  color: rgba(255, 0, 0, 1); /* Change color of img1 and img2 when hovered */
+}
+
+/* Ensure img1 and img2 stay black when hovering over INDEX */
+#nav-index.hovered .dropdown #img1,
+#nav-index.hovered .dropdown #img2 {
+  color: black; /* Ensure img1 and img2 remain black when hovering over INDEX */
+}
+
+
+/* On click - INDEX turns black, and the dropdown menu is shown */
+#nav-index.hovered {
+  color: black; /* INDEX turns black when clicked */
+}
+
+/* Add display:block to span elements to ensure they behave like block elements */
+#img1, #img2 {
+  display: block; /* Make them behave like block elements */
+  padding: 0;
+}
+
+
+
+
+#mouseLine {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: red;
+  pointer-events: none;
+  z-index: 500;
+  display: none; /* Hide initially */
+}
+.presentation-embed {
+ grid-column: 1 / -1;   /* full width across your grid */
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  height: auto;
+  display: block;
+
+  /* red border */
+  box-sizing: border-box; /* keeps border inside the width */
+  border: 1px solid red;
+  background-color: white;
+
+  /* optional niceties */
+  border-radius: 0px;    /* remove if you want square corners */
+}
+.thumb-empty {
+  visibility: hidden;   /* keeps its grid space but invisible */
+  pointer-events: none; /* avoids hover/click JS */
+}
+
+.site-update{
+  grid-column:1 / -1; color:red; font:inherit; line-height:1.16;
+  padding:2vh 0.6vw 8vh; white-space:normal;
+  text-align: center;
+}
+.site-update.typing::after{
+  content:""; display:inline-block; width:0.5ch; height:1em;
+  border-right:1px solid currentColor; vertical-align:-0.15em;
+  animation:caret-blink 1s steps(1,end) infinite;
+}
+@keyframes caret-blink{50%{border-color:transparent}}
+@media (prefers-reduced-motion: reduce){ .site-update.typing::after{animation:none} }
+
+#ModelMinority_link{
+    color: red; 
+}
+img {
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none; /* iOS: hide “Save Image” callout */
+}
+
+/* --- Mobile gate --- */
+#mobileGate{
+  position: fixed;
+  inset: 0;
+  display: none;
+  z-index: 2000;
+  background: #fff;
+  padding: 6vh 6vw;
+  text-align: center;
+  line-height: 1.2;
+  color: black;
+  display: none;
+}
+#mobileGate img{
+  max-width: 86vw;
+  max-height: 60vh;
+  width: auto;
+  height: auto;
+  display: block;
+  margin: 0 auto 2rem;
+  object-fit: contain;
+  border: 1px solid red;
+}
+#mobileGate p{
+  font-size: 14px;
+}
+
+/* On small screens: show gate, hide the site */
+@media (max-width: 820px){
+  #mobileGate{ display: block; }
+  #welcomeSection,
+  #homeContent,
+  header#mainHeader,
+  .grid-columns,
+  main,
+  #mouseLine{ display: none !important; }
+}
