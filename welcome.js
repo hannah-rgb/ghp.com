@@ -164,11 +164,11 @@ function getAlignedGridX(colIndex, columnWidth, gapWidth, columnCount, factor = 
 
 // ---- THUMB INTERACTIONS ----
 
-setTimeout(() => {
-  document.querySelector('.thumbnail-row')?.scrollIntoView({ behavior: 'auto', block: 'center' });
-}, 100);
+// setTimeout(() => {
+//   document.querySelector('.thumbnail-row')?.scrollIntoView({ behavior: 'auto', block: 'center' });
+// }, 100);
 
-const SKIP_IDS = new Set(['OpenSense', 'snake', 'arc', '2025', 'shakeshack', 'Tmax', 'select', 'Humanitico']); // add more here
+const SKIP_IDS = new Set(['snake', 'arc', '2025', 'shakeshack', 'Tmax', 'select', 'Humanitico']); // add more here
 
 document.querySelectorAll('.thumb-wrapper').forEach(wrapper => {
   const img = wrapper.querySelector('img');
@@ -313,7 +313,7 @@ const centerLabel = document.getElementById('nav-2025');
 const labelsByCol = [
   'POSTERS',           // 1st col
   'BX DESIGN',  // 2nd
-  'EDITORIAL DESIGN',  // 3rd
+  'PUBLICATION',  // 3rd
   'TYPE DESIGN / LETTERING',       // 4th
   'DESIGN RESEARCH',   // 5th
   'CREATIVE CODING',   // 6th
