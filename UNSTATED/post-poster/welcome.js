@@ -168,7 +168,7 @@ setTimeout(() => {
   document.querySelector('.thumbnail-row')?.scrollIntoView({ behavior: 'auto', block: 'center' });
 }, 100);
 
-const SKIP_IDS = new Set(['MachSchwarz', 'OpenSense', 'snake', 'arc', '2025', 'shakeshack', 'Tmax', 'select', 'Humanitico']); // add more here
+const SKIP_IDS = new Set(['snake', 'arc', '2025', 'shakeshack', 'Tmax', 'select']); // add more here
 
 document.querySelectorAll('.thumb-wrapper').forEach(wrapper => {
   const img = wrapper.querySelector('img');
@@ -311,14 +311,14 @@ function decorateThumbs() {
 // ----- Dynamic center label by column (only over thumbnail rows) -----
 const centerLabel = document.getElementById('nav-2025');
 const labelsByCol = [
-  'POSTERS',           // 1st col
-  'BX DESIGN',  // 2nd
-  'EDITORIAL DESIGN',  // 3rd
-  'TYPE DESIGN / LETTERING',       // 4th
-  'DESIGN RESEARCH',   // 5th
+  'IDENTITY DESIGN',           // 1st col
+  'MOTION POSTER',  // 2nd
+  'TYPE DESIGN',  // 3rd
+  'PUBLICATION',       // 4th
   'CREATIVE CODING',   // 6th
+  'DESIGN RESEARCH',   // 5th
   'MOTION GRAPHICS',   // 7th
-  'GOODS'      // 8th
+  'SHOP'      // 8th
 ];
 
 // calculates which column mouse is in

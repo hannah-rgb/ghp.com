@@ -165,7 +165,7 @@ function getAlignedGridX(colIndex, columnWidth, gapWidth, columnCount, factor = 
 // ---- THUMB INTERACTIONS ----
 
 
-const SKIP_IDS = new Set(['snake', 'arc', '2025', 'shakeshack', 'Tmax', 'select', 'Humanitico']); // add more here
+const SKIP_IDS = new Set(['snake', 'arc', '2025', 'shakeshack', 'Tmax', 'select']); // add more here
 
 document.querySelectorAll('.thumb-wrapper').forEach(wrapper => {
   const img = wrapper.querySelector('img');

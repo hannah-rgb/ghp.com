@@ -168,7 +168,7 @@ function getAlignedGridX(colIndex, columnWidth, gapWidth, columnCount, factor = 
 //   document.querySelector('.thumbnail-row')?.scrollIntoView({ behavior: 'auto', block: 'center' });
 // }, 100);
 
-const SKIP_IDS = new Set(['snake', 'arc', '2025', 'shakeshack', 'Tmax', 'select', 'Humanitico']); // add more here
+const SKIP_IDS = new Set(['snake', 'arc', '2025', 'shakeshack', 'Tmax', 'select']); // add more here
 
 document.querySelectorAll('.thumb-wrapper').forEach(wrapper => {
   const img = wrapper.querySelector('img');
@@ -311,13 +311,13 @@ function decorateThumbs() {
 // ----- Dynamic center label by column (only over thumbnail rows) -----
 const centerLabel = document.getElementById('nav-2025');
 const labelsByCol = [
-  'POSTERS',           // 1st col
-  'BX DESIGN',  // 2nd
-  'PUBLICATION',  // 3rd
+  'CULTURAL DESIGN',           // 1st col
+  'POSTERS',  // 2nd
   'TYPE DESIGN / LETTERING',       // 4th
-  'DESIGN RESEARCH',   // 5th
+  'PUBLICATION',  // 5th
   'CREATIVE CODING',   // 6th
-  'MOTION GRAPHICS',   // 7th
+  'BI / PACKAGE', 
+  'DESIGN RESEARCH',   // 7th
   'GOODS'      // 8th
 ];
 
