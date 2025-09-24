@@ -245,21 +245,110 @@
       <source src="video1.mp4" type="video/mp4" />
       Sorry, your browser doesn’t support embedded videos.
     </video>  
-      <img src="img4.png" alt="img2" class="full-img" />
-      <img src="img6.webp" alt="img2" class="full-img" />
-      <img src="img5.png" alt="img2" class="full-img" />
+<div class="video-slider" aria-label="Video slideshow">
+    <div class="video-slide active">
+    <video class="full-img" autoplay muted loop playsinline preload="metadata">
+      <source src="Comp 1.mp4" type="video/mp4" />
+      Sorry, your browser doesn’t support embedded videos.
+    </video>
+  </div>
+  <div class="video-slide">
+    <video class="full-img" autoplay muted loop playsinline preload="metadata">
+      <source src="Comp 2.mp4" type="video/mp4" />
+      Sorry, your browser doesn’t support embedded videos.
+    </video>
+  </div>
+  <div class="video-slide">
+    <video class="full-img" autoplay muted loop playsinline preload="metadata">
+      <source src="Comp 3.mp4" type="video/mp4" />
+      Sorry, your browser doesn’t support embedded videos.
+    </video>
+  </div>
+  <div class="video-slide">
+    <video class="full-img" autoplay muted loop playsinline preload="metadata">
+      <source src="Comp 4_1.mp4" type="video/mp4" />
+      Sorry, your browser doesn’t support embedded videos.
+    </video>
+  </div>
+  <div class="video-slide">
+    <video class="full-img" autoplay muted loop playsinline preload="metadata">
+      <source src="Comp 5_1.mp4" type="video/mp4" />
+      Sorry, your browser doesn’t support embedded videos.
+    </video>
+  </div>
+  <div class="video-slide">
+    <video class="full-img" autoplay muted loop playsinline preload="metadata">
+      <source src="Comp 6.mp4" type="video/mp4" />
+      Sorry, your browser doesn’t support embedded videos.
+    </video></div>
+
+      <div class="video-slide">
+        <video class="full-img" autoplay muted loop playsinline preload="metadata">
+      <source src="Comp 7.mp4" type="video/mp4" />
+      Sorry, your browser doesn’t support embedded videos.
+    </video>
+</div>
+
+  <!-- click zones -->
+  <div class="nav-zone nav-left"  aria-label="Previous slide"></div>
+  <div class="nav-zone nav-right" aria-label="Next slide"></div>
+
+  <!-- optional hints -->
+  <div class="hint left">←</div>
+  <div class="hint right">→</div>
+</div>
+
+<div class="video-slider" aria-label="Video slideshow">
+  <div class="video-slide active">
+  <video class="full-img" autoplay muted loop playsinline preload="metadata">
+      <source src="video2.mp4" type="video/mp4" />
+      Sorry, your browser doesn’t support embedded videos.
+    </video>  
+    </div>
+    <div class="video-slide">
+  <video class="full-img" autoplay muted loop playsinline preload="metadata">
+      <source src="video3.mp4" type="video/mp4" />
+      Sorry, your browser doesn’t support embedded videos.
+    </video>  
+    </div>
+    <div class="video-slide">
+    <video class="full-img" autoplay muted loop playsinline preload="metadata">
+      <source src="video4.mp4" type="video/mp4" />
+      Sorry, your browser doesn’t support embedded videos.
+    </video>  
+    </div>
+      <div class="nav-zone nav-left"  aria-label="Previous slide"></div>
+  <div class="nav-zone nav-right" aria-label="Next slide"></div>
+
+  <!-- optional hints -->
+  <div class="hint left">←</div>
+  <div class="hint right">→</div>
+</div>
+    <video class="full-img" autoplay muted loop playsinline preload="metadata">
+      <source src="layer.mp4" type="video/mp4" />
+      Sorry, your browser doesn’t support embedded videos.
+    </video>  
+      <img src="img.webp" alt="img2" class="full-img" />
+<br/>
       <!-- Add more images if needed for scrolling -->
     </div>
   </div>
 
   <div class="text-col">
     <div class="category-col sticky-text">
-      Post-Poster<br/>Design Research<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>Detailed Case Study
+      POST-POSTER<br/>A Graphic medium rewired by interaction<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+      <br/>Detailed Case Study
+      <br/>Written Thesis
+      <br/>Mentor:innen
     </div>
     <div class="desc-col sticky-text">
-MACH SCHWARZ is a new Swiss coffee brand, born from the absence of truly pure, unadulterated black coffee—free from sugar or additives—on the market. The brand identity and packaging were designed around this idea, with the name itself meaning “just black.” The visual language takes inspiration from the golden gradient foam that appears on freshly brewed coffee, translating this subtle richness into its design. Beginning in 2026, Mach Schwarz will be available in convenience stores and supermarkets across Switzerland, Germany, France, and Italy.
+This research repositions the urban poster as a responsive interface, challenging its historical role as a static visual artifact in public space. Traditionally a vehicle for political, commercial, or cultural messages delivered to passive audiences, the poster has become increasingly inadequate in environments shaped by sensors, screens, and data flows.
+
+Drawing on media ecology (Fuller, 2005; Mattern, 2017), second-order cybernetics (von Foerster, 2003), and the aesthetics of interaction (Kwastek, 2013), this thesis explores how posters can evolve into adaptive media systems that respond to human presence and environmental dynamics. Using a research-through-practice approach, it involves prototyping interactive posters with tools such as p5.js, PoseNet, and environmental sensors, and testing them in urban contexts.
 <br/><br/><br/><br/><br/>
       <a href="https://g-h-p.com/MDes_Thesis_2025/" id="ModelMinority_link" target="_blank" rel="noopener">Website</a>
+<br/> <a href="assets/Post-Poster-a Graphic Medium Rewired by Interaction.pdf" id="pdf_link" download>Download PDF</a>
+<br/> Jiri Oplatek, Prof. Bérénice Serra, Invar Torre Hollaus, Ted Davis
 </div>
 
     <div class="info-col sticky-text">
@@ -270,6 +359,55 @@ MACH SCHWARZ is a new Swiss coffee brand, born from the absence of truly pure, u
 </main>
   <div class="red-line-horizontal"></div>
   <div class="red-line-vertical" id="mouseLine"></div>
+  <script>
+(function () {
+  function initVideoSlider(slider) {
+    const slides = Array.from(slider.querySelectorAll('.video-slide'));
+    const leftZone = slider.querySelector('.nav-left');
+    const rightZone = slider.querySelector('.nav-right');
+    let index = slides.findIndex(s => s.classList.contains('active'));
+    if (index < 0) index = 0;
+
+    function show(i) {
+      index = (i + slides.length) % slides.length;
+      slides.forEach(s => {
+        s.classList.remove('active');
+        const v = s.querySelector('video');
+        if (v && !v.paused) v.pause();
+      });
+      const current = slides[index];
+      current.classList.add('active');
+      const vid = current.querySelector('video');
+      if (vid) { vid.muted = true; vid.play().catch(()=>{}); }
+    }
+    function next(){ show(index + 1); }
+    function prev(){ show(index - 1); }
+
+    rightZone.addEventListener('click', next);
+    leftZone.addEventListener('click', prev);
+
+    // keyboard focus only when mouse is over this slider
+    slider.addEventListener('mouseenter', () => window.addEventListener('keydown', keyHandler));
+    slider.addEventListener('mouseleave', () => window.removeEventListener('keydown', keyHandler));
+    function keyHandler(e){ if (e.key === 'ArrowRight') next(); if (e.key === 'ArrowLeft') prev(); }
+
+    // swipe
+    let sx = 0;
+    slider.addEventListener('touchstart', e => { sx = e.changedTouches[0].clientX; }, {passive:true});
+    slider.addEventListener('touchend', e => {
+      const dx = e.changedTouches[0].clientX - sx;
+      if (Math.abs(dx) > 30) (dx < 0 ? next : prev)();
+    }, {passive:true});
+
+    // ensure first visible plays
+    show(index);
+  }
+
+  // Initialize every slider on the page
+  document.querySelectorAll('.video-slider').forEach(initVideoSlider);
+})();
+</script>
+
   <script>
 
   const indexElement = document.getElementById('nav-index');

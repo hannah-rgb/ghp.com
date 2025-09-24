@@ -428,6 +428,9 @@ body.hide-cursor {
 #ModelMinority_link{
     color: red; 
 }
+#pdf_link{
+    color: red; 
+}
 img {
   -webkit-user-drag: none;
   -webkit-touch-callout: none; /* iOS: hide “Save Image” callout */
@@ -470,3 +473,51 @@ img {
   main,
   #mouseLine{ display: none !important; }
 }
+ .video-slider {
+    position: relative;
+    width: 100%;
+    max-width: 1200px; /* optional */
+    margin: 0 auto;
+    overflow: hidden;
+    background: #000;
+  }
+  .video-slide {
+    display: none;
+    width: 100%;
+    height: auto;
+  }
+  .video-slide.active { display: block; }
+
+  /* Make videos fill the width nicely */
+  .video-slide video.full-img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* Click zones */
+  .nav-zone {
+    position: absolute;
+    top: 0; bottom: 0;
+    width: 50%;
+    cursor: pointer;
+    z-index: 10;
+  }
+  .nav-left { left: 0; }
+  .nav-right { right: 0; }
+
+  /* Optional hint arrows */
+  .hint {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 6px 10px;
+    font: 24px/1 sans-serif;
+    /* background: rgba(0,0,0,0.35); */
+    color: #ff0000;
+    /* border-radius: 6px; */
+    user-select: none;
+    pointer-events: none;
+  }
+  .hint.left  { left: 12px; }
+  .hint.right { right: 12px; }
