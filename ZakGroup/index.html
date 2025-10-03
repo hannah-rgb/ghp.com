@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+ <title>G. Hannah Park Portfolio</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+<link
+  rel="icon"
+  type="image/svg+xml"
+  href='data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"%3E%3Ctext x="50%" y="50%" dy=".35em" text-anchor="middle" font-size="80" fill="red"%3E%E2%8A%B9%3C/text%3E%3C/svg%3E'>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="mobileGate" hidden>
+  <img id="mobileThumb" alt="Project preview" />
+  <p>Sorry, the mobile version is under construction. Please check on the Desktop.</p>
+</div>
+    <!-- Grid overlay for p5.js alignment -->
+    <div class="grid-columns">
+      <div></div><div></div><div></div><div></div>
+      <div></div><div></div><div></div><div></div>
+    </div>
+
+    <!-- p5.js Canvas container -->
+    <div id="welcomeSection"></div>
+
+    <!-- Revealed after animation -->
+    <div id="homeContent">
+      <div class="red-line"></div>
+<header id="mainHeader">
+  <div class="nav-item" id="nav-g">G</div>
+  <div class="nav-item" id="nav-index" >
+    INDEX
+    <div class="dropdown">
+      <!-- <span id="Museumsnacht Basel 2025">Museumsnacht Basel 2025</span> -->
+      <a href="OpenSense.html" id="OpenSense">0PEN:SENSE</span>
+      <a href="onechfgrafik.html" id="onechfgrafik">1.-CHF Grafik</a>
+      <a href="waves.html" id="waves">100 Waves</a>
+      <a href="Regionale25.html" id="Regionale25">2025 Regionale</a>
+      <span id="DGP">들꽃풀</span>
+      <span id="MANDU">만두</span>
+      <a href="AboutPublishing.html" id="AboutPublishing">About Publishing</a>
+      <span id="Afterlike">Afterlike</span>
+      <span id="A">Finnish Spring Water, Ä</span>
+      <span id="BaZ">Basler Zeitung</span>
+      <span id="arc">Tracing The ARC</span>
+      <span id="Bluemarble">Bluemarble</span>
+      <a href="photobooth.html" id="photobooth">Brutalist Photobooth</a>
+      <a href="Carnault.html" id="Carnault">Carnault</a>
+      <a href="CMDS.html" id="CMDS">CMD.S</a>
+      <a href="fondue.html" id="fondue">Fondue Lovers' T</a>
+      <span id="Frankenstein">Frankenstein</span>
+      <a href="Humanitico" id="Humanitico">Humanico</a>
+      <a href="MachSchwarz" id="MachSchwarz">Mach Schwarz</a>
+      <!-- <a href="post-poster.html" id="post-poster">Model Minority</a> -->
+      <a href="MuseumsNacht.html" id="MuseumsNacht">Museumsnacht Basel 2025</a>
+      <a href="neueden.html" id="neueden">NeuEden</a>
+      <a href="NNBS.html" id="NNBS">New New Basel Style</a>
+      <a href="onoffgrid.html" id="onoffgrid">on/off Grid</a>
+      <a href="post-poster.html" id="post-poster">Post-Poster</a>
+      <span id="pristin">pristin</span>
+      <a href="rheinshine.html" id="rheinshine">RHEIN*SHINE</a>
+      <span id="select">Select x Borderline</span>
+      <span id="shakeshack">SHAKE SHACK</span>
+      <a href="space3.html" id="space3">Space 3</a>
+      <a href="speeddate.html" id="speeddate">Speed Date CIVIC</a>
+      <span id="ARC">Tracing the arc</span>
+      <span id="sarang">The sarang church</span>
+      <span id="Thorn">Thorn.otf</span>
+      <a href="clock.html" id="clock">Time is Silver</a>
+      <span id="Tmax">Tmax Launch Teaser</span>
+      <a href="TBD.html" id="TBD">Expectation Dart</a>
+    </div>
+  </div>
+  <div class="nav-item" id="nav-hannah">HANNAH</div>      
+  <div class="nav-item" id="nav-park">PARK</div>
+      <div class="AboutH">
+      <span id="About-unfold">Grace Hannah Park navigates the spaces between<br>type, motion, print, and code to question how medium shapes message. <br>Her work often begins with noticing how a moving image can <br>breathe new life into a static poster, or how certain ideas only make sense <br>once printed, folded, or bound. Lately, she’s been drawn to the tactile intelligence of street posters—their materiality, their presence—<br>and how these qualities might be translated into digital formats. With <br>a practice grounded in both formal design and experimental tools, she treats graphic design as a responsive system rather than a fixed outcome.</span>
+    </div>
+  <div class="nav-item" id="nav-about">CONTACT</div>
+        <div class="contact">
+      <span id="contact-unfold">@www_park_works <br>hello.g-h-p.com</span>
+    </div>
+  <div class="nav-item" id="nav-2025">2025</div>
+</header>
+
+     <main>
+  <section class="thumb-stage">
+    <div class="thumbnail-row">
+    <div class="thumb-wrapper" data-id="MuseumsNacht" data-title="Museumsnacht Basel" data-category="Festival Identity & Poster" data-year="2024">
+      <img src="thumbs/MuseumsNacht.png" class="thumb-img" />
+    </div>
+    <div class="thumb-wrapper" data-id="Regionale25" data-title="Regionale25" data-category="Brand Experience Design" data-year="2021">
+      <img src="thumbs/Regionale25.png" class="thumb-img" />
+    </div>    
+    <div class="thumb-wrapper" data-id="Humanitico" data-title="Humanico" data-category="Type Design" data-year="2025">
+      <img src="thumbs/Humanitico.png" class="thumb-img" />
+    </div>
+    <div class="thumb-wrapper" data-id="AboutPublishing" data-title="About Publishing" data-category="Editorial Design" data-year="2024">
+      <img src="thumbs/AboutPublishing.png" class="thumb-img" />
+    </div>
+
+    <div class="thumb-wrapper" data-id="Carnault" data-title="Carnault" data-category="Brand Identity & Contents" data-year="2025">
+      <img src="thumbs/Carnault.png" class="thumb-img" />
+    </div>
+    <div class="thumb-wrapper" data-id="MachSchwarz" data-title="Mach Schwarz" data-category="Brand Identity & Package Design" data-year="LAUNCH 2026">
+      <img src="thumbs/MachSchwarz.png" class="thumb-img" />
+    </div>
+    <div class="thumb-wrapper" data-id="post-poster" data-title="Post-Poster" data-category="Design Research(RTD)" data-year="2025, MDes Thesis project">
+      <img src="thumbs/post-poster.png" class="thumb-img" />
+    </div>
+    <div class="thumb-wrapper" data-id="space3" data-title="Space.3" data-category="NFT Platform UX/UI Design" data-year="2021">
+      <img src="thumbs/space3.png" class="thumb-img" />
+    </div>
+  </div>
+
+  <!-- <div class="thumbnail-row">
+    <div class="thumb-wrapper thumb-empty" aria-hidden="true"></div>
+  </div> -->
+
+  <div class="thumbnail-row">
+    <div class="site-update" id="siteUpdate" role="status" aria-live="polite">
+      Selected projects for UNSTATED. <br/>For more, go to g-h-p.com
+    </div>
+  </div>
+
+</section>
+</main>
+
+
+
+<script>
+(function () {
+  const isMobile =
+    window.matchMedia("(max-width: 820px)").matches ||
+    (window.matchMedia("(hover: none)").matches && window.matchMedia("(pointer: coarse)").matches);
+
+  if (!isMobile) return;
+
+  const gate = document.getElementById("mobileGate");
+  const imgEl = document.getElementById("mobileThumb");
+
+  // Grab all thumbnail srcs already on the page
+  const found = Array.from(document.querySelectorAll(".thumb-wrapper img"))
+    .map(el => el.getAttribute("src"))
+    .filter(Boolean);
+
+  // Fallback list in case the query above returns nothing (you can add more)
+  const fallback = [
+    "thumbs/MuseumsNacht.png",
+    "thumbs/carnault.png",
+    "thumbs/ap.png",
+    "thumbs/humanitico.png",
+    "thumbs/OpenSense.png",
+    "thumbs/fondue.png",
+    "thumbs/Regionale25.png"
+  ];
+
+  const pool = found.length ? found : fallback;
+  const pick = pool[Math.floor(Math.random() * pool.length)];
+
+  // Prefer a static frame if a .gif was grabbed
+  imgEl.src = pick.endsWith(".gif") ? pick.replace(".gif", ".png") : pick;
+
+  // Reveal gate
+  gate.hidden = false;
+})();
+</script>
+
+    <script src="welcome.js"></script>
+    <div id="mouseLine"></div>
+   <script>
+(function () {
+  const el = document.getElementById('siteUpdate');
+  if (!el) return;
+
+  // 1) Use \n where you want a line break
+  const text = 'Selected projects for Zak Group.\nFor more, go to g-h-p.com';
+  const speedMsPerChar = 26;
+
+  function typeIt() {
+    el.classList.add('typing');
+    let i = 0;
+    (function step() {
+      if (i <= text.length) {
+        const partial = text.slice(0, i++);
+        // 2) Render newline as <br> WHILE typing
+        el.innerHTML = partial.replace(/\n/g, '<br>');
+        setTimeout(step, speedMsPerChar);
+      } else {
+        // 3) Make g-h-p.com clickable AFTER typing completes
+        el.innerHTML = el.innerHTML.replace(
+          /g-h-p\.com/g,
+          '<a href="https://g-h-p.com" target="_blank" rel="noopener">g-h-p.com</a>'
+        );
+      }
+    })();
+  }
+
+  // Respect reduced motion
+  const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce) {
+    el.innerHTML =
+      'Selected projects for Zak Group.<br>' +
+      'For more, go to <a href="https://g-h-p.com" target="_blank" rel="noopener">g-h-p.com</a>';
+    return;
+  }
+
+  // Start when visible
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(entries => {
+      if (entries.some(e => e.isIntersecting)) {
+        typeIt();
+        io.disconnect();
+      }
+    }, { threshold: 0.1 });
+    io.observe(el);
+  } else {
+    typeIt();
+  }
+})();
+</script>
+
+<script>
+/* Block right-click + image drag */
+(function () {
+  // 1) Disable the context menu everywhere
+  window.addEventListener('contextmenu', (e) => e.preventDefault(), { capture: true });
+
+  // 2) Prevent right-button actions that some browsers fire even without contextmenu
+  const blockIfRight = (e) => { if (e.button === 2) e.preventDefault(); };
+  window.addEventListener('mousedown', blockIfRight, { capture: true });
+  window.addEventListener('mouseup', blockIfRight,   { capture: true });
+  window.addEventListener('auxclick', blockIfRight,  { capture: true });
+
+  // 3) Stop dragging images to save
+  document.addEventListener('dragstart', (e) => {
+    if (e.target && e.target.tagName === 'IMG') e.preventDefault();
+  }, { capture: true });
+
+  // 4) Mark all images as not draggable
+  document.querySelectorAll('img').forEach(img => img.setAttribute('draggable', 'false'));
+})();
+</script>
+
+  </body>
+</html>
