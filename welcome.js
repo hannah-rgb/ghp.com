@@ -312,13 +312,13 @@ function decorateThumbs() {
 const centerLabel = document.getElementById('nav-2025');
 const labelsByCol = [
   'CULTURAL DESIGN',           // 1st col
-  'POSTERS',  // 2nd
-  'TYPE DESIGN / LETTERING',       // 4th
-  'PUBLICATION',  // 5th
+  'BI / PACKAGE',  // 2nd
+  'PUBLICATION',
+  'TYPE DESIGN / LETTERING',
+  'MOTION GRAPHIC',       // 4th  // 5th
   'CREATIVE CODING',   // 6th
-  'BI / PACKAGE', 
   'DESIGN RESEARCH',   // 7th
-  'GOODS'      // 8th
+  'MERCHANDISE'      // 8th
 ];
 
 // calculates which column mouse is in
