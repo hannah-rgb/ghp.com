@@ -319,7 +319,11 @@ body.hide-cursor {
   cursor: none;
 }
 
-
+#OpenSense:hover,
+#Regionale25:hover,
+#MachSchwarz:hover,
+#post-poster:hover,
+#Humanitico:hover,
 #Fondue:hover,
 #photobooth:hover,
 #rheinshine:hover,
@@ -333,7 +337,7 @@ body.hide-cursor {
 #space3:hover,
 #onoffgrid:hover,
 #CMDS:hover,
-#AP:hover,
+#AboutPublishing:hover,
 #clock:hover,
 #onechfGrafik:hover,
 #Regionale25:hover,
