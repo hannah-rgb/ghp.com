@@ -123,7 +123,7 @@
 
   <div class="thumbnail-row">
     <div class="site-update" id="siteUpdate" role="status" aria-live="polite">
-      Selected projects for DEPT Toronto. <br/>For more, go to g-h-p.com
+      Selected projects by October, 2025. <br/>For more, go to g-h-p.com
     </div>
   </div>
 
@@ -178,7 +178,7 @@
   if (!el) return;
 
   // 1) Use \n where you want a line break
-  const text = 'Selected projects for DEPT Toronto.\nFor more, go to g-h-p.com';
+  const text = 'Selected projects by October, 2025.\nFor more, go to g-h-p.com';
   const speedMsPerChar = 26;
 
   function typeIt() {
@@ -204,7 +204,7 @@
   const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (reduce) {
     el.innerHTML =
-      'Selected projects for DEPT Toronto.<br>' +
+      'Selected projects by October, 2025.<br>' +
       'For more, go to <a href="https://g-h-p.com" target="_blank" rel="noopener">g-h-p.com</a>';
     return;
   }
