@@ -164,6 +164,9 @@ function getAlignedGridX(colIndex, columnWidth, gapWidth, columnCount, factor = 
 
 // ---- THUMB INTERACTIONS ----
 
+// setTimeout(() => {
+//   document.querySelector('.thumbnail-row')?.scrollIntoView({ behavior: 'auto', block: 'center' });
+// }, 100);
 
 const SKIP_IDS = new Set(['snake', 'arc', '2025', 'shakeshack', 'Tmax', 'select']); // add more here
 
