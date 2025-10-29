@@ -7,7 +7,7 @@
   font-style: normal;
 }
 :root{
-  --row-h: 45vh;   /* height of the thumbnail row */
+  --row-h: 46vh;   /* height of the thumbnail row */
 }
 *{ margin:0; padding:0; box-sizing:border-box; font-family:"Commercial", sans-serif; }
 
