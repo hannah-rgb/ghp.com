@@ -164,8 +164,11 @@ function getAlignedGridX(colIndex, columnWidth, gapWidth, columnCount, factor = 
 
 // ---- THUMB INTERACTIONS ----
 
+setTimeout(() => {
+  document.querySelector('.thumbnail-row')?.scrollIntoView({ behavior: 'auto', block: 'center' });
+}, 100);
 
-const SKIP_IDS = new Set(['snake', 'arc', '2025', 'shakeshack', 'Tmax', 'select']); // add more here
+const SKIP_IDS = new Set(['MachSchwarz', 'OpenSense', 'snake', 'arc', '2025', 'shakeshack', 'Tmax', 'select', 'Humanitico']); // add more here
 
 document.querySelectorAll('.thumb-wrapper').forEach(wrapper => {
   const img = wrapper.querySelector('img');
@@ -308,13 +311,13 @@ function decorateThumbs() {
 // ----- Dynamic center label by column (only over thumbnail rows) -----
 const centerLabel = document.getElementById('nav-2025');
 const labelsByCol = [
-  'FESTIVAL IDENTITY',           // 1st col
-  'SIGNAGE',  // 2nd
-  'POSTER',  // 3rd
-  'TYPE DESIGN',       // 4th
-  'PUBLICATION',   // 5th
-  'BRAND IDENTITY',   // 6th
-  'CREATIVE CODING',   // 7th
+  'POSTERS',           // 1st col
+  'BX DESIGN',  // 2nd
+  'EDITORIAL DESIGN',  // 3rd
+  'TYPE DESIGN / LETTERING',       // 4th
+  'DESIGN RESEARCH',   // 5th
+  'CREATIVE CODING',   // 6th
+  'MOTION GRAPHICS',   // 7th
   'GOODS'      // 8th
 ];
 
