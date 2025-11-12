@@ -168,7 +168,7 @@ function getAlignedGridX(colIndex, columnWidth, gapWidth, columnCount, factor = 
 //   document.querySelector('.thumbnail-row')?.scrollIntoView({ behavior: 'auto', block: 'center' });
 // }, 100);
 
-const SKIP_IDS = new Set(['snake', 'arc', '2025', 'shakeshack', 'Tmax', 'select']); // add more here
+const SKIP_IDS = new Set(['arc','shakeshack', 'Tmax', 'select']); // add more here
 
 document.querySelectorAll('.thumb-wrapper').forEach(wrapper => {
   const img = wrapper.querySelector('img');
