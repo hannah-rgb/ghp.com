@@ -2,7 +2,7 @@
 
 @font-face {
   font-family: 'Commercial';
-  src: url('fonts/commercial.otf') format('opentype');
+  src: url('font/commercial.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
 }
