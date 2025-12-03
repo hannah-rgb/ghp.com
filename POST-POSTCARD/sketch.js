@@ -52,12 +52,12 @@ cardGraphics.rectMode(CENTER);
 
     btn = createButton("ENABLE MOTION");
 
-    btn.position(width/2 - 40.5, height/2-115);
+    btn.position(width/2 - 40.5, height/8);
     btn.style("padding", "0px 0px");
     btn.style("background", "transparent");
-    btn.style("color", "black");
+    btn.style("color", "gray");
     btn.style("border", "0px solid white");
-    btn.style("font-size", "0px");
+    btn.style("font-size", "10px");
     btn.style("letter-spacing", "0px");
 
     btn.mousePressed(() => {
