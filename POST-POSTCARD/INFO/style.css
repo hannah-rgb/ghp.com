@@ -1,0 +1,150 @@
+*{
+  font-weight: 400;
+  font-size: 12pt;
+}
+
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  max-width: 600px; 
+  margin: 40px auto;
+  font-family: "Helvetica Neue", Helvetica,sans-serif;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 1.3;
+  background: #ffffff;
+  color: #000000;
+}
+
+.col{
+  padding: 12px;
+}
+
+.col h2{
+  line-height: 1.3;
+  margin: 0;
+}
+
+
+.col p {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  margin: 0;
+}
+
+/* When active */
+.col.open p {
+  max-height: 200px; /* adjust depending on text length */
+}
+
+h1, h2, h3, h4, h5, h6,
+p {
+  margin: 0;
+}
+
+
+.poster {
+  max-width: 600px;
+  margin: 0px auto;
+  display: grid;
+  row-gap: 0px;           /* spacing between expandable items */
+}
+
+hr.divider {
+  border: 0;
+  border-top: 1px solid #000;
+  margin: 0;
+}
+
+
+
+.item {
+  display: grid;
+  grid-template-columns: 40px 1fr 40px; 
+  align-items: center;
+  margin: 0;
+}
+
+.num {
+  text-align: center;
+}
+
+/* clickable title block */
+.click-title {
+  text-align: center;
+  cursor: pointer;
+}
+
+/* hidden text behaviour */
+.hidden-text {
+  font-size: 9pt;
+  grid-column: 1 / 4;       /* expands across all 3 columns */
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease;
+}
+
+/* when opened */
+.item.open .hidden-text {
+  max-height: 500px;       /* increase if needed */
+  margin: 0px;
+}
+
+.site-footer {
+  max-width: 600px;        /* same width as your poster */
+  margin: 40px auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; /* keeps baseline aligned */
+  text-transform: uppercase;
+}
+
+.site-footer h1,
+.site-footer h2 {
+  margin: 0;               /* remove default browser spacing */
+  font-size: 12pt;         /* or em/rem to keep scalable */
+  line-height: 1.2;
+}
+
+/* Optional – styling variation */
+.site-footer h1 { text-align: left; }
+.site-footer h2 { text-align: right; }
+
+
+a {
+  color: black; 
+  font-size: 12pt;         /* text color */
+  text-decoration: none; /* or none */
+}
+
+a:hover {
+  color: red;         /* simple hover effect */
+}
+
+.poster a {  color: black; 
+  font-size: 9pt;         /* text color */
+  text-decoration: underline; /* or none */
+}
+
+.poster a:hover {
+  color: red;         /* simple hover effect */
+}
+
+.highlight-span {
+  transition: background-color 10s linear;
+  /* make sure it keeps whatever the parent text style is */
+  text-transform: inherit;
+  font-weight: inherit;
+  font-style: inherit;
+  letter-spacing: inherit;
+}
+
+
+.highlight-span.fade-out {
+  background-color: transparent;
+}
+
