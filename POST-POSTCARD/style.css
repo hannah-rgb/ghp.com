@@ -1,10 +1,31 @@
 html, body {
   margin: 0;
-  padding: 10;
-  overflow: hidden;
-  background-color: black;
+  padding: 0;
+  overflow: auto;   /* allow scrolling */
+  height: auto;     /* important: DO NOT force 100% height */
+  width: 100%;
 }
 
 canvas {
   display: block;
+}
+
+body {
+  margin: 0;
+  background: rgb(242, 242, 242);
+  color: black;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+.site-header {
+  padding: 12px 12px;
+  border-bottom: 0px solid #333;
+  font-size: 14px;
+}
+
+/* Hide header on small screens (mobile) */
+@media (max-width: 768px) {
+  .site-header {
+    display: none;
+  }
 }
