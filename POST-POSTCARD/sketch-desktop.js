@@ -31,6 +31,9 @@ let copiedAt = 0;   // timestamp when copy happened (for feedback)
    // map: key -> { img, colStart, colSpan }
 
 let clickTargets = {
+   "DOUBLE_SIDE": { url: "downloads/double_side.zip", downloadName: "double_side.zip" },
+  "SKETCHES":       { url: "downloads/sketches.zip",           downloadName: "sketches.zip" },
+  "FONTS":       { url: "downloads/fonts.zip",           downloadName: "fonts.pdf" },
 
   "Gyroscope": {
     colStart: 6,
@@ -638,30 +641,24 @@ function mousePressed() {
   let clickedSpecial = false;
 
   for (let z of clickZones) {
-    if (mouseX >= z.x && mouseX <= z.x + z.w && mouseY >= z.y && mouseY <= z.y + z.h) {
+  if (mouseX >= z.x && mouseX <= z.x + z.w && mouseY >= z.y && mouseY <= z.y + z.h) {
 
+    // 1) If it's a CODE target → show overlay
+    if (z.def.code) {
       overlayConfig = z.def;
       showOverlay = true;
-      clickedSpecial = true;
-
-      // NEW: if this target uses codeUrl, fetch it and cache into overlayConfig.code
-      if (overlayConfig.codeUrl && !overlayConfig.code) {
-        overlayConfig.code = "Loading…";
-
-        fetch(overlayConfig.codeUrl)
-          .then(r => r.text())
-          .then(txt => {
-            overlayConfig.code = txt; // now drawClickOverlay() + copy works
-          })
-          .catch(err => {
-            console.error(err);
-            overlayConfig.code = "Failed to load code. Check console + file path.";
-          });
-      }
-
-      break;
     }
+
+    // 2) If it's a DOWNLOAD/URL target → trigger download
+    if (z.def.url) {
+      triggerDownload(z.def.url, z.def.downloadName || "");
+    }
+
+    clickedSpecial = true;
+    break;
   }
+}
+
 
   if (clickedSpecial) return;
 
@@ -918,4 +915,13 @@ function openSection(key) {
         console.error(err);
       });
   }
+}
+function triggerDownload(url, filename) {
+  const a = document.createElement("a");
+  a.href = url;
+  if (filename) a.download = filename; // best-effort; may be ignored cross-origin
+  a.target = "_blank";
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
 }
