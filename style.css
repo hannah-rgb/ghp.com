@@ -211,7 +211,7 @@ header#mainHeader {
 #nav-hannah  { left: 27.25vw;   top: 2.2vh; }
 #nav-park    { left: 51.4vw;   top: 2.2vh; } /*width: calc(((101vw - (9 * 0.6vw)) / 8)*2);*/
 #nav-about   { left: 89.7vw;   top: 3.95vh; }
-#nav-2025    { left: 50vw;   top: 3.1vh; color: red; }
+#nav-2026    { left: 50vw;   top: 3.1vh; color: red; }
 
 .thumbnail-row {
   scroll-snap-align: center;

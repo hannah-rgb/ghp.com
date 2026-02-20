@@ -31,7 +31,7 @@ setupNavInteractions();
     { name: "HANNAH", col: 2, align: "left", yOffset: () => -height / 2 + 20, x: 0, y: 0 },
     { name: "PARK", col: 4, align: "left", yOffset: () => -height / 2 + 20, x: 0, y: 0 },
     { name: "ABOUT", col: 7, align: "left", yOffset: () => -height / 2 + 40, x: 0, y: 0 },
-    { name: "2025", col: null, align: "center", yOffset: () => -height / 2 + 30, x: 0, y: 0, isCenter: true }
+    { name: "2026", col: null, align: "center", yOffset: () => -height / 2 + 30, x: 0, y: 0, isCenter: true }
   ];
 
   let font;
@@ -116,7 +116,7 @@ setupNavInteractions();
         }
 
         textAlign(getTextAlign(label.align), CENTER);
-        fill(label.name === "2025" ? color(255, 0, 0) : 0);
+        fill(label.name === "2026" ? color(255, 0, 0) : 0);
         text(label.name, label.x, label.y);
       }
 
@@ -176,7 +176,7 @@ document.querySelectorAll('.thumb-wrapper').forEach(wrapper => {
 
   // Hover swap stays
   wrapper.addEventListener('mouseenter', () => {
-    img.src = `thumbs/${baseName}.gif`;
+    img.src = `thumbs/${baseName}.webp`;
   });
   wrapper.addEventListener('mouseleave', () => {
     img.src = `thumbs/${baseName}.png`;
@@ -293,7 +293,7 @@ function decorateThumbs() {
       meta.classList.add('thumb-meta');
       const title = wrapper.dataset.title || `TITLE ${i + 1}`;
       const category = wrapper.dataset.category || "CATEGORY";
-      const year = wrapper.dataset.year || "2025";
+      const year = wrapper.dataset.year || "2026";
       meta.innerHTML = `${title}<br><span class="meta-category">${category}</span><br><span class="meta-year">${year}</span>`;
       wrapper.appendChild(meta);
     }
@@ -309,7 +309,7 @@ function decorateThumbs() {
   });
 }
 // ----- Dynamic center label by column (only over thumbnail rows) -----
-const centerLabel = document.getElementById('nav-2025');
+const centerLabel = document.getElementById('nav-2026');
 const labelsByCol = [
   'CULTURAL DESIGN',           // 1st col
   'BI / PACKAGE',  // 2nd
@@ -365,6 +365,6 @@ document.addEventListener('mousemove', (e) => {
     const col = getActiveColumn(e.clientX, window.innerWidth);
     centerLabel.textContent = labelsByCol[col];
   } else {
-    centerLabel.textContent = '2025';
+    centerLabel.textContent = '2026';
   }
 });
