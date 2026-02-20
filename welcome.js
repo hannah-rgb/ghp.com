@@ -100,7 +100,7 @@ setupNavInteractions();
       }
       fill(255, 0, 0);
       textAlign(CENTER);
-      text("2025", mouseX, centerY - 2);
+      text("2026", mouseX, centerY - 2);
     } else {
       let allAtTarget = true;
       for (let label of clickedLabels) {

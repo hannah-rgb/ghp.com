@@ -179,7 +179,7 @@
   const pick = pool[Math.floor(Math.random() * pool.length)];
 
   // Prefer a static frame if a .gif was grabbed
-  imgEl.src = pick.endsWith(".gif") ? pick.replace(".gif", ".png") : pick;
+  imgEl.src = pick.endsWith(".webp") ? pick.replace(".webp", ".png") : pick;
 
   // Reveal gate
   gate.hidden = false;
